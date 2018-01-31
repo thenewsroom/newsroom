@@ -93,7 +93,7 @@ DATABASES = {
         'NAME': 'thenewsroom',
         'USER': 'thenewsroom',
         'PASSWORD': 'ASCs+KaRmBdrE',
-        'HOST': '13.127.33.48/localhost',
+        'HOST': '',
         'PORT': '',
     }
 }
