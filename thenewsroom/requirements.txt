@@ -1,0 +1,17 @@
+bootstrap-admin
+django==1.11.1
+Ipython==4.0
+psycopg2==2.6.1
+celery==3.1.23
+Pillow==3.4.2
+anyjson==0.3.3
+argparse==1.2.1
+djangorestframework==3.6.3
+simplejson==3.10.0
+requests
+BeautifulSoup==3.2.1
+feedparser==5.2.1
+mechanize==0.2.5
+#Ipython==4.0
+#CREATE ROLE rajtilak WITH LOGIN;create database newsroom_db;ALTER ROLE rajtilak SUPERUSER;ALTER USER rajtilak with password 'password';
+#./manage.py shell -c "from django.db import connection; print(connection.cursor().connection.server_version)"

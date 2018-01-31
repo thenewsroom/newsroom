@@ -1,0 +1,14 @@
+*.pyc
+nbproject
+mysite.log
+user.log
+src
+**/**/local.py
+media
+*.*~
+**/migrations
+.local_env_setting
+*.backup
+local_celery.py
+manage.py
+ohmgear/celery.py
