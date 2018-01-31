@@ -25,7 +25,7 @@ SECRET_KEY = '9qeu%*gehg1ma_1g4x=op$hjcs36uef2xc-thnt_wiqt-s4q0t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1','13.127.33.48','localhost']
 
 
 # Application definition
@@ -77,13 +77,23 @@ WSGI_APPLICATION = 'thenewsroom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'thenewsroom_db',
+#         'USER': 'newsroom',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'thenewsroom_db',
-        'USER': 'newsroom',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'thenewsroom',
+        'USER': 'thenewsroom',
+        'PASSWORD': 'ASCs+KaRmBdrE',
+        'HOST': '13.127.33.48/localhost',
         'PORT': '',
     }
 }

@@ -10,5 +10,4 @@ media
 .local_env_setting
 *.backup
 local_celery.py
-manage.py
 ohmgear/celery.py
