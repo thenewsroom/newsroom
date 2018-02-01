@@ -13,8 +13,8 @@ PAYMENT_STATUS = (
 def company_logo(instance, filename):
     if filename:
         target_dir = 'uploads/company_img/'
-        _, ext = filename.rsplit('.', 1)
-        filename = str(filename) + '.' + ext
+        fname, ext = filename.rsplit('.', 1)
+        filename = str(fname) + '.' + ext
         return '/'.join([target_dir, filename])
 
 # Create your models here.

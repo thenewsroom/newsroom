@@ -27,8 +27,8 @@ STORY_STATUS = (
 def story_image(instance, filename):
     if filename:
         target_dir = 'uploads/story_image/'
-        _, ext = filename.rsplit('.', 1)
-        filename = str(filename) + '.' + ext
+        fname, ext = filename.rsplit('.', 1)
+        filename = str(fname) + '.' + ext
         return '/'.join([target_dir, filename])
 
 # Create your models here.
@@ -93,3 +93,14 @@ class Content(models.Model):
 
     class Meta:
         ordering = ('-published_date',)
+
+    def save(self, *args, **kwargs):
+        """"
+        Custom
+        save
+        """
+        if not self.slug:
+            self.slug = self.title.lower().replace(' ', '-')
+
+        super(Content, self).save(*args, **kwargs)
+

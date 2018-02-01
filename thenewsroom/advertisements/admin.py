@@ -19,7 +19,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
     ist_per_page = 100
 
     #inlines = [OrderedProductInline]
-    readonly_fields = ('created_on',)
+    #readonly_fields = ('created_on',)
 admin.site.register(Advertisement, AdvertisementAdmin)
 
 class AdvertiserdetailsAdmin(admin.ModelAdmin):
