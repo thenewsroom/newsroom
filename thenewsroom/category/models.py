@@ -74,7 +74,7 @@ class SubCategory(models.Model):
 class Language(models.Model):
     language = models.CharField(max_length=40)
     created_on = models.DateTimeField(
-        'Created on', auto_now_add=True, db_index=True
+        'Created on', db_index=True
     )
     created_by = models.ForeignKey(
         User,
