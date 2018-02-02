@@ -10,6 +10,12 @@ PAYMENT_STATUS = (
     (2, 'clear'),
 )
 
+PLANS = (
+    (1, 'monthly'),
+    (2, 'quarterly'),
+    (2, 'Annually'),
+)
+
 def company_logo(instance, filename):
     if filename:
         target_dir = 'uploads/company_img/'
@@ -48,8 +54,9 @@ class Advertiserdetails(models.Model):
     mobile = models.IntegerField()
     comments = models.TextField(blank=True, null=True)
     active = models.BooleanField(default=True)
-    pament_due = models.FloatField(default=0.0)
+    payment_due = models.FloatField(default=0.0)
     payed_on = models.DateTimeField(blank=True, null=True, db_index=True)
+    plan = models.IntegerField(choices=PLANS, default=1)
     payment_received_amount = models.FloatField(default=0.0)
     total_payment = models.FloatField(default=0.0)
     status = models.IntegerField(choices=PAYMENT_STATUS, default=1)
@@ -60,9 +67,9 @@ class Advertiserdetails(models.Model):
     def save(self, *args, **kwargs):
         """" Custom save """
         if self.status == 1:
-            self.pament_due = self.total_payment - self.payment_received_amount
+            self.payment_due = self.total_payment - self.payment_received_amount
         if self.total_payment == self.payment_received_amount:
             self.status = 2
-            self.pament_due = 0.0
+            self.payment_due = 0.0
 
         super(Advertiserdetails, self).save(*args, **kwargs)

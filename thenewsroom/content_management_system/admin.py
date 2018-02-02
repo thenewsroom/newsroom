@@ -10,8 +10,8 @@ class ContentAdmin(admin.ModelAdmin):
     search_fields = ['title', ]
     fieldsets = ((None, {
         'fields': (('title', 'slug', 'sub_headline',), ('status', 'body_html', 'published_date',), ('created_on', 'created_by'),
-                   ('subcategory', 'publication', 'category',), ('image', 'updated_on', 'published_by','story_status',),
-                   ('url', 'author', 'approved_on','approved_by', 'comments', 'credit_line',))
+                   ('subcategory', 'publication', 'category',), ('image', 'updated_on',), ('published_by','story_status',),
+                   ('url', 'author', 'approved_on',),('approved_by', 'comments', 'credit_line',))
     }
                   ),
                  )

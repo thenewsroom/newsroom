@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
-    name = models.CharField('Headline', max_length=400)
+    name = models.CharField(max_length=400)
     slug = models.SlugField(
         max_length=400,
     )
@@ -40,7 +40,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     category = models.ForeignKey(Category)
-    name = models.CharField('Headline', max_length=400)
+    name = models.CharField(max_length=400)
     slug = models.SlugField(
         max_length=400,
         help_text='Automatically built from the title.'
