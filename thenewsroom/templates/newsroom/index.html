@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+<title>Newsroom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="css/main.css">-->
+
+<style>
+    /*
+Author CK
+*/
+
+body { font-family: "Raleway", sans-serif }
+.logo-section {
+  padding: 12px 45px;
+}
+
+section.nav-items-wrapper a {
+    padding: 15px 20px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.nav-items-wrapper .active,
+section.nav-items-wrapper a:hover,
+section.nav-items-wrapper a:focus {
+   background: #F44336
+}
+.nav-items-wrapper {
+  background: #3F51B5;
+  padding: 0 45px;
+}
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:9;
+}
+.content-wrapper {
+  background: #f6f6f6;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+}
+.content-inner {
+  width: 1265px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.row.row-gen {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row.row-gen>div {
+    padding-left: 0;
+}
+.news-top-items {
+    padding: 0;
+}
+
+.news-top-items li {
+  background: #fff;
+  list-style: none;
+  float: left;
+  width: 44%;
+  padding: 15px;
+}
+.news-top-items li h1 {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.news-top-items li:first-child {
+  width: 468px;
+  padding-top: 5px;
+  background: #fff;
+  margin-right: 39px;
+}
+.news-top-items li:first-child .img-thumb {
+  height: 290px;
+}
+.news-top-items li:first-child .img-thumb img {
+  height: 100%;
+}
+
+.news-top-items li:nth-child(2) {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.news-top-items li:nth-child(2) .img-thumb {
+  width: 215px;
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+  display: table-cell;
+  z-index: 1;
+  margin-right: 15px;
+}
+
+.news-top-items li:nth-child(2) h2 {
+  position: relative;
+  background: #fff;
+  padding: 0 10px 0 15px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  vertical-align: middle;
+  font-weight: 300;
+  border-radius: 3px;
+  min-height: 147px;
+  display: table-cell;
+}
+
+.news-top-items li:nth-child(3), .news-top-items li:nth-child(4), .news-top-items li:nth-child(5) {
+  width: 400px;
+  text-align: left;
+  float: left;
+  margin-bottom: 18px;
+  display: table;
+  background: transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.news-top-items li:nth-child(3) .img-thumb,
+.news-top-items li:nth-child(4) .img-thumb,
+.news-top-items li:nth-child(5) .img-thumb
+{
+  width: 76px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.news-top-items li h2 {
+  font-size: 16px;
+  line-height: 22px;
+  color: #333;
+  margin-top: 5px;
+}
+.news-top-items li h2 a,
+.news-top-items li h2 a:hover
+.news-top-items li h2 a:focus
+{
+  color: #333;
+  text-decoration: none;
+}
+.news-top-items li img {
+  width: 100%;
+  border-radius: 3px;
+}
+.news-top-items li h3 {
+  display: table-cell;
+  padding-left: 16px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.news-top-items li h3 a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*
+  Navbar Dropdowns
+*/
+
+.nav-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  background: #F44336;
+  z-index: 9;
+  padding: 0;
+  width: 200px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.nav-dropdown li {
+  list-style: none;
+  padding: 10px 20px;
+}
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown{
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+/*================================
+ 4 col news style goes here
+==================================*/
+
+.section-header a {
+    display: inline-block;
+    background: #828282;
+    color: #fff;
+    width: auto;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-decoration: none;
+    border-left: 4px solid #F44336;
+}
+.news-ul {
+  padding: 0;
+  float: left;
+}
+.col-4-1 .news-ul,
+.col-4-3 .news-ul
+{
+  margin-top: 15px;
+}
+.col-4-2 .news-ul {
+  margin-top: 25px;
+}
+.col-4-2 .news-ul h4,
+.col-4-4 .news-ul h4 {
+  font-size: 17px;
+  line-height: 21px;
+  font-family: serif;
+}
+
+.news-ul li  {
+  list-style: none;
+  display: table;
+  width: 100%;
+  float: left;
+  padding: 15px 0 0 0;
+}
+.news-ul li h4 {
+  font-size: 16px;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  padding-right: 20px;
+  top: -7px;
+}
+.news-ul li h4 a {
+  color: #333;
+  text-decoration: none;
+}
+.news-ul li .col-img-thumb {
+  width: 60px!important;
+  height: 60px;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: top;
+  margin-bottom: 8px;
+  float: left;
+  position: relative;
+  padding-left: 0!important;
+}
+.col-img-detail img {
+  width: 100%;
+}
+.col-img-detail {
+  height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+.col-4-1, .col-4-3 {
+  width: 290px;
+  float: left;
+  margin-right: 55px;
+}
+.col-4-detail {
+  width: 100%;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.col-4-detail:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 70%;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent 0, rgba(0,0,0,1) 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+.col-4-detail h3 {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 21px;
+  font-family: 'Arial', serif;
+  font-weight: 700;
+  padding: 0 15px 10px 15px;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+}
+.col-4-detail h3 a {
+  color: #fff;
+}
+
+.col-4-2, .col-4-4 {
+  width: 225px;
+  float: left;
+  margin-right: 60px;
+}
+/*===================================
+ Opinion section style goes here
+===================================*/
+.row-opinion {
+    float: left;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+.opinion-inner {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.opinion-inner ul {
+    padding: 0;
+}
+.opinion-inner ul li {
+    width: 30.5%;
+    height: 135px;
+    float: left;
+    margin: 0 20px 0 0;
+    padding: 15px 15px 0 15px;
+    background: #fff;
+    box-sizing: border-box;
+    display: table;
+    position: relative;
+    border-radius: 3px;
+}
+.opinion_description {
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 10px;
+}
+.opinion_description h6 {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #0d4d79;
+    margin-bottom: 10px;
+}
+
+.opinion_description h6 a
+{
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+}
+.opinion-img-thumb {
+    display: table-cell;
+    vertical-align: top;
+    width: 54px;
+}
+
+.opinion-img-thumb img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+.opinion-img-thumb div {
+    height: 54px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.nnl, .nnr {
+    float: left;
+}
+
+.nnl {
+    width: 300px;
+}
+
+/*=====================
+ Style for Photo gallery
+======================*/
+
+.newsroom-gallery-left-col {
+    width: 820px;
+}
+.gallery-inner {
+    width: 100%;
+    height: 511px;
+    float: left;
+}
+.newsroom-gallery-left-col .gallery-inner ul {
+    padding: 0;
+}
+.newsroom-gallery-left-col .gallery-inner ul li {
+    height: 511px;
+    width: 100%;
+    float: left;
+    position: relative;
+    list-style: none;
+}
+.newsroom-gallery-left-col .gallery-inner li .img-thumb {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.gallery-inner li .img-thumb img {
+    width: 100%;
+}
+
+.gallery-inner h3 {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    padding: 0 100px 0 97px;
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 7px rgba(0,0,0,1);
+}
+.gallery-inner h3 a {
+    color: #fff;
+}
+
+.newsroom-gallery-right-col {
+    width: 380px;
+    height: 511px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.newsroom-gallery-right-col ul {
+    padding-right: 40px;
+}
+.newsroom-gallery-right-col ul li {
+    margin-bottom: 20px;
+    width: 100%;
+    float: left;
+    list-style: none;
+    position: relative;
+}
+.newsroom-gallery-right-col .img-thumb {
+    height: 175px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.newsroom-gallery-right-col .img-thumb img {
+    width: 100%;
+}
+.newsroom-gallery-right-col li h6 {
+    box-sizing: border-box;
+    float: left;
+    padding: 10px 0 0 0;
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+}
+.newsroom-gallery-right-col li h6 a {
+    color: #333;
+}
+/*=========================
+ Footer style goes here
+=============================*/
+footer {
+    text-align: center;
+}
+footer ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px 15px;
+}
+footer ul a {
+    color: #333;
+    text-decoration: none;
+}
+</style>
+
+<body>
+<section class="logo-section">
+<div class="logo-wrapper row">
+<div class="col-sm-4">Newsroom</div>
+<div class="col-sm-8">Live Streaming</div>
+
+</div>
+</section>
+<section id="nav-items-wrapper" class="nav-items-wrapper">
+    <a class="active">
+    Home
+    </a>
+    <a class="nav-dropdown-wrapper">Cities
+        <ul class="nav-dropdown">
+            <li>Mumbai</li>
+            <li>New Delhi</li>
+            <li>Kolkata</li>
+            <li>Bangaluru</li>
+            <li>Odisha</li>
+        </ul>
+    </a>
+    <a>Politics</a>
+    <a>Economy</a>
+    <a>Sports</a>
+    <a class="nav-dropdown-wrapper">Entertainment
+     <ul class="nav-dropdown">
+            <li>Hollywood</li>
+            <li>Bollywood</li>
+        </ul>
+    </a>
+    <a>Opinion</a>
+    <a>India</a>
+    <a>World</a>
+    <a>Photo/Video Gallery</a>
+</section>
+
+<section class="content-wrapper">
+    <div class="content-inner">
+      <div class="row row-gen">
+        <div class="col-xs-9">
+            <h2 class="section-header">
+                  <a href="#">
+                      <span>Top Picks</span>
+                  </a>
+              </h2>
+          <ul class="news-top-items">
+            <li>
+                <h1>Budget Session From Today, All-Out Push For Triple Talaq Bill: 10 Points</h1>
+                <div class="img-thumb">
+                    <a href="#">
+                        <img src="https://drop.ndtv.com/images/homepage/all_party_meet_budget_session_pti_650x400_636528143994954721.jpg">
+                    </a>
+                </div>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/business/arun-jaitley-to-present-economic-survey-2018-today-five-things-to-know-1805675?pfrom=home-topscroll"><img alt="Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know" title="Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know" class="imgbrd" src="https://i.ndtvimg.com/i/2018-01/arun-jaitley_650x400_41516538868.jpg" border="0"></a>
+              </div>
+              <h2><a href="https://www.ndtv.com/business/arun-jaitley-to-present-economic-survey-2018-today-five-things-to-know-1805675?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know&quot;);" class="item-title">Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know</a></h2>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll"><img alt="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" title="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/nitish-kumar-pti_240x180_41510585042.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616%3Fpfrom%3Dhome-topscroll&amp;click.id=485144094955453182&amp;click.region.index=2&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll"><img alt="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" title="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/p-chidambaram_240x180_61510131927.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;If Selling <i>&quot;Pakodas&quot;</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fif-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593%3Fpfrom%3Dhome-topscroll&amp;click.id=611415116947619310&amp;click.region.index=3&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">If Selling <i>"Pakodas"</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll"><img alt="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" title="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" class="imgbrd" src="https://i.ndtvimg.com/i/2017-10/vasundhara-raje_240x180_81508828691.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts&quot;);" class="item-title">In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts</a>
+              </h3>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-3">
+            
+        </div>
+      </div>
+      <div class="row-col-4">
+          <div class="col-4-1">
+              <h2 class="section-header">
+                  <a href="#">
+                      <span>Politics</span>
+                  </a>
+              </h2>
+              <div class="col-4-detail">
+                  <h3>
+                        <a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto" class="news-item-title">
+                            Ten Terms You Should Know To Understand Budget 2018
+                        </a>
+                  </h3>
+                  <div class="col-img-detail"><a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto"><img class="imgbrd lazy" src="https://i.ndtvimg.com/i/2018-01/budget-2018_240x180_51516967671.jpg?output-quality=70&output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529155434001572.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a></div>
+              </div>
+              <ul class="news-ul">
+                  <li>
+                      <h4>
+                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                Standard Deduction For Salaried Employees May Make A Comeback
+                            </a>
+                      </h4>
+                      <div class="col-img-thumb">
+                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                      </div>
+                  </li>
+                  <li>
+                        <h4>
+                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                  Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                              </a>
+                        </h4>
+                        <div class="col-img-thumb">
+                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>
+                                <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                    Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                </a>
+                        </h4>
+                        <div class="col-img-thumb">
+                                <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                        </div>
+                    </li>
+              </ul>
+          </div>
+          <div class="col-4-2">
+              <h2 class="section-header">
+                  <a href="#">
+                      <span>Economy</span>
+                  </a>
+              </h2>
+                <ul class="news-ul">
+                        <li>
+                                <h4>
+                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                          Standard Deduction For Salaried Employees May Make A Comeback
+                                      </a>
+                                </h4>
+                                <div class="col-img-thumb">
+                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                                </div>
+                            </li>
+                        <li>
+                            <h4>
+                                  <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                      Standard Deduction For Salaried Employees May Make A Comeback
+                                  </a>
+                            </h4>
+                            <div class="col-img-thumb">
+                                  <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                            </div>
+                        </li>
+                        <li>
+                              <h4>
+                                    <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                        Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                    </a>
+                              </h4>
+                              <div class="col-img-thumb">
+                                    <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                              </div>
+                          </li>
+                          <li>
+                              <h4>
+                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                          Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                      </a>
+                              </h4>
+                              <div class="col-img-thumb">
+                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                              </div>
+                          </li>
+                    </ul>
+          </div>
+          <div class="col-4-3">
+                <h2 class="section-header">
+                    <a href="#">
+                        <span>Sports</span>
+                    </a>
+                </h2>
+                <div class="col-4-detail">
+                    <h3>
+                          <a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto" class="news-item-title">
+                              Injury scare for Virat Kohli
+                          </a>
+                    </h3>
+                    <div class="col-img-detail"><a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto"><img class="imgbrd lazy" src="https://static-global-s-msn-com.akamaized.net/img-resizer/tenant/amp/entityid/BBIyDPv.img?h=194&w=300&m=6&q=60&u=t&o=t&l=f&x=1970&y=1047" border="0" style="display: block;"></a></div>
+                </div>
+                <ul class="news-ul">
+                    <li>
+                        <h4>
+                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                  Standard Deduction For Salaried Employees May Make A Comeback
+                              </a>
+                        </h4>
+                        <div class="col-img-thumb">
+                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                        </div>
+                    </li>
+                    <li>
+                          <h4>
+                                <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                    Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                </a>
+                          </h4>
+                          <div class="col-img-thumb">
+                                <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                          </div>
+                      </li>
+                      <li>
+                          <h4>
+                                  <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                      Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                  </a>
+                          </h4>
+                          <div class="col-img-thumb">
+                                  <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                          </div>
+                      </li>
+                </ul>
+            </div>
+            <div class="col-4-4">
+                    <h2 class="section-header">
+                        <a href="#">
+                            <span>Entertainment</span>
+                        </a>
+                    </h2>
+                      <ul class="news-ul">
+                              <li>
+                                      <h4>
+                                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                                Standard Deduction For Salaried Employees May Make A Comeback
+                                            </a>
+                                      </h4>
+                                      <div class="col-img-thumb">
+                                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                                      </div>
+                                  </li>
+                              <li>
+                                  <h4>
+                                        <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                            Standard Deduction For Salaried Employees May Make A Comeback
+                                        </a>
+                                  </h4>
+                                  <div class="col-img-thumb">
+                                        <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                                  </div>
+                              </li>
+                              <li>
+                                    <h4>
+                                          <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                              Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                          </a>
+                                    </h4>
+                                    <div class="col-img-thumb">
+                                          <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4>
+                                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                                Auto Expo 2018: Tata Motors To Showcase 6 Electric Vehicles
+                                            </a>
+                                    </h4>
+                                    <div class="col-img-thumb">
+                                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" data-original="https://drop.ndtv.com/images/homepage/240_636529072431008775.jpg?output-quality=70&amp;output-format=jpg" border="0" style="display: block;"></a>
+                                    </div>
+                                </li>
+                          </ul>
+                </div>
+      </div>
+      <div class="row-opinion">
+          <h2 class="section-header">
+              <a href="#">
+                  <span>Opinion</span>
+              </a>
+          </h2>
+          <div class="opinion-inner">
+              <ul>
+                  <li>
+                    <div class="opinion_description">
+                        <h6>
+                            <a href="#">As Kids, I Showed Her Around School. This Week, My Sister Died</a>
+                        </h6>
+                        <span>Sheikh Zaffar Iqbal</span>
+                    </div>
+                    <div class="opinion-img-thumb">
+                        <div>
+                            <a href="#">
+                                <img src="https://i.ndtvimg.com/i/2018-01/zaffar-iqbal-240_240x180_61517307824.jpg">
+                            </a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="opinion_description">
+                        <h6>
+                            <a href="#">I Lost 22 Kgs In 9 Months. My Weight-Loss Secret - No 'Diets'</a>
+                        </h6>
+                        <span>Daljit S. Kochhar</span>
+                    </div>
+                    <div class="opinion-img-thumb">
+                        <div>
+                            <a href="#">
+                                <img src="https://i.ndtvimg.com/i/2018-01/daljit_240x180_61516960514.jpg">
+                            </a>
+                        </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="opinion_description">
+                        <h6>
+                            <a href="#">Sharad Pawar Vs Rahul Gandhi A Problem For Opposition Unity</a>
+                        </h6>
+                        <span>Ashutosh</span>
+                    </div>
+                    <div class="opinion-img-thumb">
+                        <div>
+                            <a href="#">
+                                <img src="https://i.ndtvimg.com/i/2016-12/ashutosh-blogger_240x180_81482928566.jpg">
+                            </a>
+                        </div>
+                    </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="row row-gen row-nation">
+        <div class="col-xs-9">
+            <h2 class="section-header">
+                  <a href="#">
+                      <span>India News</span>
+                  </a>
+            </h2>
+          <ul class="news-top-items">
+            <li>
+                <h1>Budget impact: How to save now</h1>
+                <div class="img-thumb">
+                    <a href="#">
+                        <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBIyZli.img?h=340&w=624&m=6&q=60&u=t&o=t&l=f&f=jpg&x=210&y=237">
+                    </a>
+                </div>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/business/arun-jaitley-to-present-economic-survey-2018-today-five-things-to-know-1805675?pfrom=home-topscroll"><img alt="Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know" title="Economic Survey 2018 To Be Tabled In Parliament Today: 5 Things To Know" class="imgbrd" src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AAotrfb.img?h=152&w=300&m=6&q=60&u=t&o=t&l=f&f=jpg&x=509&y=278" border="0"></a>
+              </div>
+              <h2><a href="#" class="item-title">Big pay hike for President, VP, MPs</a></h2>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll"><img alt="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" title="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/nitish-kumar-pti_240x180_41510585042.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616%3Fpfrom%3Dhome-topscroll&amp;click.id=485144094955453182&amp;click.region.index=2&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll"><img alt="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" title="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/p-chidambaram_240x180_61510131927.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;If Selling <i>&quot;Pakodas&quot;</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fif-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593%3Fpfrom%3Dhome-topscroll&amp;click.id=611415116947619310&amp;click.region.index=3&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">If Selling <i>"Pakodas"</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll"><img alt="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" title="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" class="imgbrd" src="https://i.ndtvimg.com/i/2017-10/vasundhara-raje_240x180_81508828691.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts&quot;);" class="item-title">In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts</a>
+              </h3>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-3">
+
+        </div>
+      </div>
+      <div class="row row-gen row-world">
+        <div class="col-xs-9">
+            <h2 class="section-header">
+                  <a href="#">
+                      <span>World News</span>
+                  </a>
+            </h2>
+          <ul class="news-top-items">
+            <li>
+                <h1>Merit-Based Immigration Necessary For US Economy: White House</h1>
+                <div class="img-thumb">
+                    <a href="#">
+                        <img src="https://i.ndtvimg.com/i/2018-01/donald-trump_240x180_81517365879.jpg?output-quality=70&output-format=jpg">
+                    </a>
+                </div>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="#"><img class="imgbrd" src="https://i.ndtvimg.com/i/2018-01/vladimir-putin-bloomberg_240x180_71517058310.jpg?output-quality=70&output-format=jpg" border="0"></a>
+              </div>
+              <h2><a href="#" class="item-title">Putin Family Split Offers Peek At Secret Dealings Of Russia Inc.</a></h2>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll"><img alt="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" title="Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/nitish-kumar-pti_240x180_41510585042.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616%3Fpfrom%3Dhome-topscroll&amp;click.id=485144094955453182&amp;click.region.index=2&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">Ally Nitish Kumar Pours Cold Water On PM's Simultaneous Elections Idea</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll"><img alt="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" title="If Selling 'Pakodas' Is A Job, So Is Begging: P Chidambaram's Dig At PM" class="imgbrd" src="https://i.ndtvimg.com/i/2017-11/p-chidambaram_240x180_61510131927.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/if-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;If Selling <i>&quot;Pakodas&quot;</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM&quot;);" class="item-title" ping="//nr.taboola.com/newsroom/1.0/ndtv/notify-click?view.id=204212338122187554&amp;page.template=news-home&amp;page.dashboard=news-home&amp;page.url=https%3A%2F%2Fwww.ndtv.com%2F&amp;click.region.id=topscroll-b-page&amp;click.url=https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Fif-selling-pakodas-is-a-job-begging-a-job-too-p-chidambaram-s-swipe-at-pm-narendra-modi-1805593%3Fpfrom%3Dhome-topscroll&amp;click.id=611415116947619310&amp;click.region.index=3&amp;item.url=&amp;ui=05e5c6fa-ab97-4389-a718-9028e7abbfbe&amp;notify.type=ping">If Selling <i>"Pakodas"</i> Is A Job, So Is Begging: P Chidambaram's Dig At PM</a>
+              </h3>
+            </li>
+            <li>
+              <div class="img-thumb">
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll"><img alt="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" title="In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts" class="imgbrd" src="https://i.ndtvimg.com/i/2017-10/vasundhara-raje_240x180_81508828691.jpg" border="0"></a>
+              </div>
+              <h3>
+                  <a href="https://www.ndtv.com/india-news/in-rajasthan-bypolls-today-prestige-battle-for-vasundhara-raje-10-facts-1805670?pfrom=home-topscroll" onclick="javascript:GAP_Event_tracking(&quot;topscroll-b-page&quot;,&quot;In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts&quot;);" class="item-title">In Rajasthan Bypolls Today, Prestige Battle For Vasundhara Raje: 10 Facts</a>
+              </h3>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-3">
+
+        </div>
+      </div>
+      <div class="row-photos">
+           <h2 class="section-header">
+              <a href="#">
+                  <span>Photos</span>
+              </a>
+          </h2>
+          <div class="newsroom-gallery-left-col">
+              <div class="gallery-inner">
+                  <ul>
+                      <li>
+                          <div class="img-thumb">
+                              <a href="">
+                                  <img src="https://images.taboola.com/taboola/image/fetch/f_jpg%2Cq_auto%2Ch_240%2Cw_360%2Cc_fill%2Cg_faces:auto%2Ce_sharpen/http%3A//cdn.taboola.com/libtrc/static/thumbnails/0382810df956b76cd328566cca42549f.jpg">
+                              </a>
+                          </div>
+                          <h3>
+                              <a href="http://movies.ndtv.com/photos/inside-shamita-shettys-birthday-party-55502" data-tb-shadow-region-link="1">How Sobha Ltd. is changing perceptions about Dwarka Expressway?</a>
+                          </h3>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div class="newsroom-gallery-right-col">
+              <ul>
+                  <li>
+                      <div class="img-thumb">
+                          <a href="#">
+                              <img src="https://drop.ndtv.com/images/homepage/270x300_636531707410447836.jpg?output-quality=70&output-format=jpg">
+                          </a>
+                      </div>
+                      <h6>
+                          <a href="">11 Times Sushmita Sen's Insta Was Full Of Golden Life Advice</a>
+                      </h6>
+                  </li>
+                  <li>
+                      <div class="img-thumb">
+                          <a href="#">
+                              <img src="https://drop.ndtv.com/albums/ENTERTAINMENT/anitadongrelakmefashionweek/800-600_640x480.jpg?downsize=222:167&output-quality=90&output-format=jpg">
+                          </a>
+                      </div>
+                      <h6>
+                          <a href="">Sagarika Ghatge, Shamita Shetty In Shades Of Pastel</a>
+                      </h6>
+                  </li>
+                  <li>
+                      <div class="img-thumb">
+                          <a href="#">
+                              <img src="https://drop.ndtv.com/images/homepage/air_pollution_650_jpg_636530950162434453.jpg?output-quality=70&output-format=jpg">
+                          </a>
+                      </div>
+                      <h6>
+                          <a href="">Air Pollution ‘A Cause Of Concern', Budget 2018 Announces Special Schemes To Tackle Stubble Burning</a>
+                      </h6>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+</section>
+<footer>
+    <ul>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">© 2018 Newsroom</a></li>
+    </ul>
+</footer>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--<script src="js/main.js"></script>-->
+<script>
+    window.onscroll = function() {stickNav()};
+
+var navbar = document.getElementById("nav-items-wrapper");
+var sticky = navbar.offsetTop;
+
+function stickNav() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky-nav")
+  } else {
+    navbar.classList.remove("sticky-nav");
+  }
+}
+</script>
+</body>
+</html>
