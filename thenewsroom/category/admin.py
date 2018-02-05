@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Category, SubCategory, Language
+from .models import Category, SubCategory, Language, TrendingCategory
 
 class CategoryAdmin(admin.ModelAdmin):
 
@@ -49,4 +49,19 @@ class LanguageAdmin(admin.ModelAdmin):
                  )
 
 admin.site.register(Language, LanguageAdmin)
+
+class TrendingCategoryAdmin(admin.ModelAdmin):
+
+    list_display = ('name', 'created_on', 'active',)
+    search_fields = ['name']
+    list_filter = ('active', 'created_on',)
+    fieldsets = ((None, {'fields': (('name', 'slug', 'active', 'created_on'),
+                                    ('created_by', 'comments',),
+                                    )
+
+                         }
+                  ),
+                 )
+
+admin.site.register(TrendingCategory, TrendingCategoryAdmin)
 # Register your models here.

@@ -86,4 +86,35 @@ class Language(models.Model):
     def __unicode__(self):
         return u'%s' % (self.language)
 
+class TrendingCategory(models.Model):
+    name = models.CharField(max_length=400)
+    slug = models.SlugField(
+        max_length=400,
+    )
+    created_on = models.DateTimeField(
+        'Created on', db_index=True
+    )
+    created_by = models.ForeignKey(
+        User,
+        related_name='user_trend_categories', default=1
+    )
+    comments = models.CharField(max_length=4000, blank=True, null=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Trending Categories"
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def save(self, *args, **kwargs):
+        """"
+        Custom
+        save
+        """
+        if not self.slug:
+            self.slug = self.name.lower().replace(' ', '-')
+
+        super(TrendingCategory, self).save(*args, **kwargs)
+
 # Create your models here.
