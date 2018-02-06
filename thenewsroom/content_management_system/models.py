@@ -62,6 +62,7 @@ class Content(models.Model):
         max_length=255, blank=True,
         help_text="Leave it blank for it to be populated by the system."
     )
+    top_pick = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now_add=True)
     created_on = models.DateTimeField(
         'Created on', auto_now_add=True, db_index=True
