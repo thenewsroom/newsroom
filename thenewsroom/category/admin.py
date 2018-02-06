@@ -10,6 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_on', 'active',)
     search_fields = ['name']
     list_filter = ('active', 'created_on',)
+    prepopulated_fields = {"slug": ('name',)}
     fieldsets = ((None, {'fields': (('name', 'slug', 'active', 'created_on'),
                                     ('created_by', 'comments',),
                                     )
@@ -24,6 +25,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'category', 'created_on', 'active',)
     search_fields = ['name']
+    prepopulated_fields = {"slug": ('name',)}
     list_filter = ('active', 'created_on', 'category',)
     fieldsets = ((None, {'fields': (('name', 'category', 'slug', 'active', 'created_on'),
                                     ('created_by', 'comments',),
@@ -55,6 +57,7 @@ class TrendingCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_on', 'active',)
     search_fields = ['name']
     list_filter = ('active', 'created_on',)
+    prepopulated_fields = {"slug": ('name',)}
     fieldsets = ((None, {'fields': (('name', 'slug', 'active', 'created_on'),
                                     ('created_by', 'comments',),
                                     )

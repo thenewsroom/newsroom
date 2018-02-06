@@ -8,6 +8,7 @@ class ContentAdmin(admin.ModelAdmin):
     list_display = ('title', 'publication', 'status',  'published_date',)
     list_filter = ('created_on', 'status', 'category', 'subcategory', 'published_date', 'story_status')
     search_fields = ['title', ]
+    prepopulated_fields = {"slug": ('title',)}
     fieldsets = ((None, {
         'fields': (('title', 'slug', 'sub_headline',), ('status', 'body_html', 'published_date',), ('created_on', 'created_by'),
                    ('subcategory', 'publication', 'category',), ('image', 'updated_on',), ('published_by','story_status',),
