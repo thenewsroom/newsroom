@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include, url
 from django.contrib import admin
+from content_management_system import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('content_management_system.urls'),),
+    url(r'^$', views.commingsoon, name='commingsoon'),
+    url(r'^home/', include('content_management_system.urls'),),
+    url(r'^category/', include('content_management_system.urls'),),
+    url(r'^content/', include('content_management_system.urls'), ),
 ]

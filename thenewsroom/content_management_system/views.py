@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Content
 from category.models import Category,SubCategory,Language
 from advertisements.models import Advertisement, Advertiserdetails
@@ -32,3 +33,41 @@ def home(request):
                     "photos_contents": photos_contents}
     print len(top_picks[1:]), len(top_picks)
     return render(request, 'newsroom/index.html', content_dict)
+
+def category_content(request, category_name):
+    print category_name
+    #return HttpResponse('comming.')
+    if category_name == 'photogallery':
+        category_name = 'Photo/Video Gallery'
+    try:
+        category_name = category_name.title()
+        print category_name
+        cat_slug = Category.objects.get(name=category_name).slug
+    except Exception as e:
+        return HttpResponse(str(e))
+
+    contents = Content.objects.filter(category__slug=cat_slug).order_by('created_on')[:20]
+    return render(request, 'home/home.html', {"categ_contents": contents})
+
+def subcategory_content(request, subcategory_name):
+    print subcategory_name
+    #return HttpResponse('comming.')
+    try:
+        subcategory_name = subcategory_name.title()
+        print subcategory_name
+        subcat_slug = SubCategory.objects.get(name=subcategory_name).slug
+    except Exception as e:
+        return HttpResponse(str(e))
+    contents = Content.objects.filter(subcategory__slug=subcat_slug).order_by('created_on')[:20]
+    return render(request, 'home/home.html', {"categ_contents": contents})
+
+def story(request, story_id):
+    print story_id
+    c = Content.objects.get(id=int(story_id))
+    print c.title
+    #return HttpResponse('comming.')
+    return render(request, 'home/home.html', {})
+
+def commingsoon(request):
+    return render(request, 'home/home.html', {})
+

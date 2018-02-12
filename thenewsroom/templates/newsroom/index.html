@@ -509,28 +509,28 @@ footer ul a {
     <a class="active" href="#">
     Home
     </a>
-    <span class="nav-dropdown-wrapper"><a href="category/odisha/">Odisha</a>
+    <span class="nav-dropdown-wrapper"><a href="/category/c/odisha/" target="_blank">Odisha</a>
         <ul class="nav-dropdown">
-            <li><a href="category/subcategory/sambalpur/">Sambalpur</a></li>
-            <li><a href="category/subcategory/berhampur/">Berhampur</a></li>
-            <li><a href="category/subcategory/cuttack/">Cuttack</a></li>
-            <li><a href="category/subcategory/bhubaneswar/">Bhubaneswar</a></li>
+            <li><a href="/category/subcategory/sambalpur/" target="_blank">Sambalpur</a></li>
+            <li><a href="/category/subcategory/berhampur/" target="_blank">Berhampur</a></li>
+            <li><a href="/category/subcategory/cuttack/" target="_blank">Cuttack</a></li>
+            <li><a href="/category/subcategory/bhubaneswar/" target="_blank">Bhubaneswar</a></li>
         </ul>
     </span>
-    <a href="category/politics/">Politics</a>
-    <a href="category/economy/">Economy</a>
-    <a href="category/sports/">Sports</a>
-    <span class="nav-dropdown-wrapper"><a href="category/entertainment/">Entertainment</a>
+    <a href="/category/c/politics/" target="_blank">Politics</a>
+    <a href="/category/c/economy/" target="_blank">Economy</a>
+    <a href="/category/c/sports/" target="_blank">Sports</a>
+    <span class="nav-dropdown-wrapper"><a href="/category/c/entertainment/" target="_blank">Entertainment</a>
      <ul class="nav-dropdown">
-         <li><a href="category/subcategory/Hollywood/">Hollywood</a></li>
-         <li><a href="category/subcategory/bollywood/">Bollywood</a></li>
-         <li><a href="category/subcategory/ollywood/">Ollywood</a></li>
+         <li><a href="/category/subcategory/Hollywood/" target="_blank">Hollywood</a></li>
+         <li><a href="/category/subcategory/bollywood/" target="_blank">Bollywood</a></li>
+         <li><a href="/category/subcategory/ollywood/" target="_blank">Ollywood</a></li>
         </ul>
     </span>
-    <a href="category/opinion/">Opinion</a>
-    <a href="category/india/">India</a>
-    <a href="category/world/">World</a>
-    <a href="category/photogallery/">Photo/Video Gallery</a>
+    <a href="/category/c/opinion/" target="_blank">Opinion</a>
+    <a href="/category/c/india/" target="_blank">India</a>
+    <a href="/category/c/world/" target="_blank">World</a>
+    <a href="/category/c/photogallery/" target="_blank">Photo/Video Gallery</a>
 </section>
 
 <section class="content-wrapper">
@@ -546,7 +546,7 @@ footer ul a {
             <li>
                 <h1>{{top_picks1.title}}</h1>
                 <div class="img-thumb">
-                    <a href="{% url 'home' %}">
+                    <a href="/content/view/{{top_picks1.id}}/" target="_blank">
                         <img src="{{static_url}}{{top_picks1.image.url}}"/>
                     </a>
                 </div>
@@ -554,10 +554,10 @@ footer ul a {
             {% for tpstory in top_picks %}
             <li>
               <div class="img-thumb">
-                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
+                  <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
               </div>
               <h3>
-                  <a href="https://www.ndtv.com/india-news/ally-nitish-kumar-pours-cold-water-on-pm-modis-simultaneous-elections-idea-1805616?pfrom=home-topscroll" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                  <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
               </h3>
             </li>
             {% endfor %}
@@ -570,28 +570,28 @@ footer ul a {
       <div class="row-col-4">
           <div class="col-4-1">
               <h2 class="section-header">
-                  <a href="#">
+                  <a href="/category/c/politics/" target="_blank">
                       <span>Politics</span>
                   </a>
               </h2>
               <div class="col-4-detail">
                   <h3>
-                        <a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto" class="news-item-title">
+                        <a href="/content/view/{{plc.id}}/" target="_blank" class="news-item-title">
                             {{plc.title|slice:":30"}}
                         </a>
                   </h3>
-                  <div class="col-img-detail"><a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{plc.image.url}}" border="0" style="display: block;"/></a></div>
+                  <div class="col-img-detail"><a href="/content/view/{{plc.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{plc.image.url}}" border="0" style="display: block;"/></a></div>
               </div>
               <ul class="news-ul">
                 {% for pstory in politics_contents %}
                   <li>
                       <h4>
-                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                            <a href="/content/view/{{pstory.id}}/" target="_blank" class="news-item-title">
                                 {{pstory.title|slice:":30"}}
                             </a>
                       </h4>
                       <div class="col-img-thumb">
-                            <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{pstory.image.url}}" border="0" style="display: block;"/></a>
+                            <a href="/content/view/{{pstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{pstory.image.url}}" border="0" style="display: block;"/></a>
                       </div>
                   </li>
                 {% endfor %}
@@ -599,7 +599,7 @@ footer ul a {
           </div>
           <div class="col-4-2">
               <h2 class="section-header">
-                  <a href="#">
+                  <a href="/category/c/economy/" target="_blank">
                       <span>Economy</span>
                   </a>
               </h2>
@@ -607,12 +607,12 @@ footer ul a {
                     {% for ecstory in economy_contents %}
                         <li>
                                 <h4>
-                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                      <a href="/content/view/{{ecstory.id}}/" target="_blank" class="news-item-title">
                                           {{ecstory.title|slice:":30"}}
                                       </a>
                                 </h4>
                                 <div class="col-img-thumb">
-                                      <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{ecstory.image.url}}" border="0" style="display: block;"/></a>
+                                      <a href="/content/view/{{ecstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{ecstory.image.url}}" border="0" style="display: block;"/></a>
                                 </div>
                             </li>
                     {% endfor %}
@@ -620,28 +620,28 @@ footer ul a {
           </div>
           <div class="col-4-3">
                 <h2 class="section-header">
-                    <a href="#">
+                    <a href="/category/c/sports/" target="_blank">
                         <span>Sports</span>
                     </a>
                 </h2>
                 <div class="col-4-detail">
                     <h3>
-                          <a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto" class="news-item-title">
+                          <a href="/content/view/{{sp1.id}}/" target="_blank" class="news-item-title">
                               {{sp1.title|slice:":30"}}
                           </a>
                     </h3>
-                    <div class="col-img-detail"><a href="https://auto.ndtv.com/news/hero-xtreme-200r-unveiled-in-india-prices-to-be-announced-in-april-2018-1806210?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{sp1.image.url}}" border="0" style="display: block;"/></a></div>
+                    <div class="col-img-detail"><a href="/content/view/{{sp1.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{sp1.image.url}}" border="0" style="display: block;"/></a></div>
                 </div>
                 <ul class="news-ul">
                   {% for spostory in sports_contents %}
                     <li>
                         <h4>
-                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                              <a href="/content/view/{{spostory.id}}/" target="_blank" class="news-item-title">
                                   {{spostory.title|slice:":30"}}
                               </a>
                         </h4>
                         <div class="col-img-thumb">
-                              <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{spostory.image.url}}" border="0" style="display: block;"/></a>
+                              <a href="/content/view/{{spostory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{spostory.image.url}}" border="0" style="display: block;"/></a>
                         </div>
                     </li>
                   {% endfor %}
@@ -649,7 +649,7 @@ footer ul a {
             </div>
             <div class="col-4-4">
                     <h2 class="section-header">
-                        <a href="#">
+                        <a href="/category/c/entertainment/" target="_blank">
                             <span>Entertainment</span>
                         </a>
                     </h2>
@@ -657,12 +657,12 @@ footer ul a {
                           {% for entstory in entertain_contents %}
                               <li>
                                   <h4>
-                                        <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto" class="news-item-title">
+                                        <a href="/content/view/{{entstory.id}}/" target="_blank" class="news-item-title">
                                             {{entstory.title|slice:":30"}}
                                         </a>
                                   </h4>
                                   <div class="col-img-thumb">
-                                        <a href="https://auto.ndtv.com/news/auto-expo-2018-tata-motors-to-showcase-6-electric-vehicles-1806009?pfrom=home-auto"><img class="imgbrd lazy" src="{{static_url}}{{entstory.image.url}}" border="0" style="display: block;"/></a>
+                                        <a href="/content/view/{{entstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{entstory.image.url}}" border="0" style="display: block;"/></a>
                                   </div>
                               </li>
                           {% endfor %}
@@ -671,7 +671,7 @@ footer ul a {
       </div>
       <div class="row-opinion">
           <h2 class="section-header">
-              <a href="#">
+              <a href="/category/c/opinion/" target="_blank">
                   <span>Opinion</span>
               </a>
           </h2>
@@ -681,12 +681,12 @@ footer ul a {
                   <li>
                     <div class="opinion_description">
                         <h6>
-                            <a href="#">{{opnstory.title|slice:":30"}}</a>
+                            <a href="/content/view/{{opnstory.id}}/" target="_blank">{{opnstory.title|slice:":30"}}</a>
                         </h6>
                     </div>
                     <div class="opinion-img-thumb">
                         <div>
-                            <a href="#">
+                            <a href="/content/view/{{opnstory.id}}/" target="_blank">
                                 <img src="{{static_url}}{{opnstory.image.url}}"/>
                             </a>
                         </div>
@@ -699,7 +699,7 @@ footer ul a {
       <div class="row row-gen row-nation">
         <div class="col-xs-9">
             <h2 class="section-header">
-                  <a href="#">
+                  <a href="/category/c/india/" target="_blank">
                       <span>India News</span>
                   </a>
             </h2>
@@ -707,7 +707,7 @@ footer ul a {
             <li>
                 <h1>{{indcon.title|slice:":30"}}</h1>
                 <div class="img-thumb">
-                    <a href="#">
+                    <a href="/content/view/{{indcon.id}}/" target="_blank">
                         <img src="{{static_url}}{{indcon.image.url}}"/>
                     </a>
                 </div>
@@ -715,9 +715,9 @@ footer ul a {
             {% for indstory in india_contents %}
               <li>
                 <div class="img-thumb">
-                    <a href="https://www.ndtv.com/business/arun-jaitley-to-present-economic-survey-2018-today-five-things-to-know-1805675?pfrom=home-topscroll"><img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{indstory.image.url}}" border="0"/></a>
+                    <a href="/content/view/{{indstory.id}}/" target="_blank"><img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{indstory.image.url}}" border="0"/></a>
                 </div>
-                <h2><a href="#" class="item-title">{{indstory.title|slice:":30"}}</a></h2>
+                <h2><a href="/content/view/{{indstory.id}}/" target="_blank" class="item-title">{{indstory.title|slice:":30"}}</a></h2>
               </li>
             {% endfor %}
           </ul>
@@ -729,7 +729,7 @@ footer ul a {
       <div class="row row-gen row-world">
         <div class="col-xs-9">
             <h2 class="section-header">
-                  <a href="#">
+                  <a href="/category/c/world/" target="_blank">
                       <span>World News</span>
                   </a>
             </h2>
@@ -737,7 +737,7 @@ footer ul a {
             <li>
                 <h1>{{wrldc.title|slice:":30"}}</h1>
                 <div class="img-thumb">
-                    <a href="#">
+                    <a href="/content/view/{{wrldc.id}}/" target="_blank">
                         <img src="{{static_url}}{{wrldc.image.url}}"/>
                     </a>
                 </div>
@@ -745,9 +745,9 @@ footer ul a {
             {% for wrlstory in world_contents %}
               <li>
                 <div class="img-thumb">
-                  <a href="#"><img class="imgbrd" src="{{static_url}}{{wrlstory.image.url}}" border="0"></a>
+                  <a href="/content/view/{{wrlstory.id}}/" target="_blank"><img class="imgbrd" src="{{static_url}}{{wrlstory.image.url}}" border="0"></a>
                 </div>
-                <h2><a href="#" class="item-title">{{wrlstory.title|slice:":30"}}</a></h2>
+                <h2><a href="/content/view/{{wrlstory.id}}/" target="_blank" class="item-title">{{wrlstory.title|slice:":30"}}</a></h2>
               </li>
             {% endfor %}
           </ul>
@@ -758,7 +758,7 @@ footer ul a {
       </div>
       <div class="row-photos">
            <h2 class="section-header">
-              <a href="#">
+              <a href="/category/c/photogallery/" target="_blank">
                   <span>Photos</span>
               </a>
           </h2>
