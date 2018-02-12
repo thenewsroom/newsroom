@@ -3,8 +3,11 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from .models import Content
+from django import forms
+from .forms import ContentAdminForm
 
 class ContentAdmin(admin.ModelAdmin):
+    form = ContentAdminForm
     list_display = ('title', 'publication', 'status',  'published_date',)
     list_filter = ('created_on', 'status', 'category', 'subcategory', 'published_date', 'story_status')
     search_fields = ['title', ]

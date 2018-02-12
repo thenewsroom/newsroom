@@ -71,3 +71,5 @@ def story(request, story_id):
 def commingsoon(request):
     return render(request, 'home/home.html', {})
 
+
+
