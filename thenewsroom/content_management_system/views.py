@@ -41,13 +41,17 @@ def category_content(request, category_name):
         category_name = 'Photo/Video Gallery'
     try:
         category_name = category_name.title()
-        print category_name
         cat_slug = Category.objects.get(name=category_name).slug
     except Exception as e:
         return HttpResponse(str(e))
-
-    contents = Content.objects.filter(category__slug=cat_slug).order_by('created_on')[:20]
-    return render(request, 'home/home.html', {"categ_contents": contents})
+    advet_content = Advertisement.objects.all()
+    contents = Content.objects.filter(category__slug=cat_slug).order_by('created_on')[:10]
+    trending_contents = Content.objects.filter(category__slug=cat_slug, trending=True).order_by('created_on')[:10]
+    not_miss_contents = Content.objects.filter(category__slug=cat_slug, not_miss=True).order_by('created_on')[:10]
+    print contents.values('id')
+    return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
+                                                      "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
+                                                      "category_name": category_name})
 
 def subcategory_content(request, subcategory_name):
     print subcategory_name
@@ -58,12 +62,14 @@ def subcategory_content(request, subcategory_name):
         subcat_slug = SubCategory.objects.get(name=subcategory_name).slug
     except Exception as e:
         return HttpResponse(str(e))
+    advet_content = Advertisement.objects.all()
     contents = Content.objects.filter(subcategory__slug=subcat_slug).order_by('created_on')[:20]
-    return render(request, 'home/home.html', {"categ_contents": contents})
+    return render(request, 'home/home.html', {"static_url": static_url, "categ_contents": contents})
 
 def story(request, story_id):
     print story_id
     c = Content.objects.get(id=int(story_id))
+    advet_content = Advertisement.objects.all()
     print c.title
     #return HttpResponse('comming.')
     return render(request, 'home/home.html', {})

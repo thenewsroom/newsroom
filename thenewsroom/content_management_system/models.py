@@ -53,7 +53,7 @@ class Content(models.Model):
     )
     status = models.IntegerField(choices=PUB_STATUS, default=0)
     body_html = models.TextField(blank=True)
-    published_date = models.DateTimeField('Date published', db_index=True)
+    published_date = models.DateTimeField('Date published', blank=True, null=True ,db_index=True)
 
     publication = models.ForeignKey(
         Publication, limit_choices_to={'active': True}
@@ -63,6 +63,8 @@ class Content(models.Model):
         help_text="Leave it blank for it to be populated by the system."
     )
     top_pick = models.BooleanField(default=False)
+    trending = models.BooleanField(default=False)
+    not_miss = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now_add=True)
     created_on = models.DateTimeField(
         'Created on', auto_now_add=True, db_index=True
@@ -94,6 +96,15 @@ class Content(models.Model):
 
     class Meta:
         ordering = ('-published_date',)
+
+    def pub_date_strf(self):
+        import datetime
+        if self.published_date:
+            published_date = self.published_date.replace(tzinfo=None)
+            pub_date = datetime.datetime.strftime(published_date, "%d %B %Y")
+            return pub_date
+        else:
+            return self.published_date
 
     def save(self, *args, **kwargs):
         """"
