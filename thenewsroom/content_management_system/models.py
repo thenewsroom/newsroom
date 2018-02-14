@@ -24,6 +24,13 @@ STORY_STATUS = (
     (3, 'Merged Words'),
 )
 
+FILE_LOAD_STATUS = (
+    ('f', 'Draft'),
+    ('S', 'Success'),
+    ('R', 'Reject'),
+    ('D', 'Duplicate'),
+)
+
 def story_image(instance, filename):
     if filename:
         target_dir = 'uploads/story_image/'
@@ -116,3 +123,11 @@ class Content(models.Model):
 
         super(Content, self).save(*args, **kwargs)
 
+class ContentLoadStatus(models.Model):
+    filename = models.CharField(max_length=255)
+    status = models.CharField(max_length=1, choices=FILE_LOAD_STATUS, default='f')
+    comments = models.TextField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return "%s" % (self.filename)

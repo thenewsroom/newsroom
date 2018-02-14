@@ -26,6 +26,7 @@ class ContentAdminForm(forms.ModelForm):
             # check for duplicate slug
         title = cleaned_data.get('title')
         slug = cleaned_data.get('slug')
+        pub_date = cleaned_data.get('published_date')
         if not slug:
             slug = slugify(title)
         storyQs = Content.objects.only('id', 'slug').filter(slug=slug)
@@ -36,11 +37,12 @@ class ContentAdminForm(forms.ModelForm):
             self._errors['title'] = ErrorList([mark_safe(
                 """<p><a href="/admin/content_management_system/content/%d/" target="_blank">Potential Duplicate: story with same title already exists.</a></p>""" % (
                     storyQs.values_list('id', flat=True)[0]))])
-        pub_date = cleaned_data.get('published_date').replace(tzinfo=None)
-        d = datetime.datetime.now().replace(hour=23, minute=59, second=59, microsecond=0)
-        print pub_date, d
         if pub_date:
-            if pub_date > d:
-                self._errors['published_date'] = ErrorList([mark_safe("published date can't be future date")])
+            pub_date = cleaned_data.get('published_date').replace(tzinfo=None)
+            d = datetime.datetime.now().replace(hour=23, minute=59, second=59, microsecond=0)
+            print pub_date, d
+            if pub_date:
+                if pub_date > d:
+                    self._errors['published_date'] = ErrorList([mark_safe("published date can't be future date")])
         return cleaned_data
 

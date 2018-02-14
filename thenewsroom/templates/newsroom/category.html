@@ -100,7 +100,7 @@
         <div class="category-left-col">
             {% for trarticle in trend_cont %}
               <div class="category-left-article">
-                        <h5 class="lctitle"><a href="#">{{trarticle.title}}</a></h5>
+                        <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/">{{trarticle.title}}</a></h5>
                         <div class="feed-article-lead">
                             {{trarticle.body_html|slice:":100"}}
                         </div>
@@ -113,12 +113,12 @@
           {%for article in categ_contents%}
               <div class="feed-article">
                   <div class="feed_article_img_wrapper">
-                      <a href="#">
+                      <a href="/content/view/{{article.id}}/">
                           <img src="{{static_url}}{{article.image.url}}" border="0" alt="Image"/>
                       </a>
                   </div>
                     <div>
-                        <h3 class="article-title"><a href="#">{{article.title}}</a></h3>
+                        <h3 class="article-title"><a href="/content/view/{{article.id}}/">{{article.title}}</a></h3>
                     <div class="date-byline">
                       <span>{{article.author}}</span>&middot; <span>{{article.pub_date_strf}}</span>
                     </div>
@@ -137,7 +137,7 @@
         <div class="category-left-col">
           {%for llarticle in not_miss_cont%}
               <div class="category-left-article">
-                        <h5 class="lctitle"><a href="#">{{llarticle.title}}</a></h5>
+                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/">{{llarticle.title}}</a></h5>
                         <div class="feed-article-lead">
                             {{llarticle.body_html|slice:":100"}}
                         </div>
