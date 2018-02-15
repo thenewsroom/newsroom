@@ -1,159 +1,159 @@
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
 
-<title>Thenewsroom</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-.newsroom-header {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin: 0 auto;
-    text-align: center;
-    padding: 12px 20px;
-    background: #3F51B5;
-    color: #fff;
-  }
-  .newsroom-header a {
-    color: #fff;
-  }
-  .category-header {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  .category-main-wrapper {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .category-articles-inner {
-    padding: 12px 20px;
-  }
-  .feed-article {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-  }
-  .date-byline {
-    color: #888;
-    font-size: 12px;
-    margin-bottom: 5px;
-  }
-  .tag_items {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-  .tag_items li {
-    display: inline-block;
-    padding: 2px 12px;
-    font-size: 12px;
-    color: #888;
-    border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    margin: 4px;
-  }
-  .article-title a {
-    color: #333;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  .category-left-article {
-    padding: 12px 20px;
-  }
-  .category-left-title {
-    padding: 10px 20px;
-    border-bottom: 1px solid #ececec;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-    .feed_article_img_wrapper {
-        width: 187px;
-        float: left;
-        margin-right: 20px;
-    }
-    .feed_article_img_wrapper img {
-        width: 100%;
-    }
-</style>
-<body>
-<div class="newsroom-header">
-  <div><a href="index.html">Thenewsroom</a></div>
-</div>
-    <div class="category-header">
-      <h3>{{category_name}}</h3>
-    </div>
-  <div class="category-main-wrapper">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="category-left-title">
-          Trending
-        </div>
-        <div class="category-left-col">
-            {% for trarticle in trend_cont %}
-              <div class="category-left-article">
-                        <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/">{{trarticle.title}}</a></h5>
-                        <div class="feed-article-lead">
-                            {{trarticle.body_html|slice:":100"}}
-                        </div>
-              </div>
-            {% endfor %}
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="category-articles-inner">
-          {%for article in categ_contents%}
-              <div class="feed-article">
-                  <div class="feed_article_img_wrapper">
-                      <a href="/content/view/{{article.id}}/">
-                          <img src="{{static_url}}{{article.image.url}}" border="0" alt="Image"/>
-                      </a>
-                  </div>
-                    <div>
-                        <h3 class="article-title"><a href="/content/view/{{article.id}}/">{{article.title}}</a></h3>
-                    <div class="date-byline">
-                      <span>{{article.author}}</span>&middot; <span>{{article.pub_date_strf}}</span>
-                    </div>
-                    <div class="feed-article-lead">
-                        {{article.body_html|slice:":150"}}
-                    </div>
-                    </div>
-              </div>
-          {%endfor%}
-        </div>
-      </div>
-      <div class="col-md-3">
-          <div class="category-left-title">
-          Dont Miss
-        </div>
-        <div class="category-left-col">
-          {%for llarticle in not_miss_cont%}
-              <div class="category-left-article">
-                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/">{{llarticle.title}}</a></h5>
-                        <div class="feed-article-lead">
-                            {{llarticle.body_html|slice:":100"}}
-                        </div>
-              </div>
-          {%endfor%}
-        </div>
-      </div>
-    </div>
-  </div>
-<footer>
-    <ul>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Contact us</a></li>
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">© 2018 Newsroom</a></li>
-    </ul>
-</footer>
-</body>
-</html>
+<!--<title>Thenewsroom</title>-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<style>-->
+<!--.newsroom-header {-->
+    <!--font-size: 14px;-->
+    <!--text-transform: uppercase;-->
+    <!--font-weight: 600;-->
+    <!--margin: 0 auto;-->
+    <!--text-align: center;-->
+    <!--padding: 12px 20px;-->
+    <!--background: #3F51B5;-->
+    <!--color: #fff;-->
+  <!--}-->
+  <!--.newsroom-header a {-->
+    <!--color: #fff;-->
+  <!--}-->
+  <!--.category-header {-->
+    <!--max-width: 1280px;-->
+    <!--margin: 0 auto;-->
+    <!--padding: 0 20px;-->
+    <!--border-bottom: 1px solid #ccc;-->
+  <!--}-->
+  <!--.category-main-wrapper {-->
+    <!--max-width: 1280px;-->
+    <!--margin: 0 auto;-->
+  <!--}-->
+  <!--.category-articles-inner {-->
+    <!--padding: 12px 20px;-->
+  <!--}-->
+  <!--.feed-article {-->
+    <!--border-bottom: 1px solid #ccc;-->
+    <!--padding-bottom: 10px;-->
+  <!--}-->
+  <!--.date-byline {-->
+    <!--color: #888;-->
+    <!--font-size: 12px;-->
+    <!--margin-bottom: 5px;-->
+  <!--}-->
+  <!--.tag_items {-->
+    <!--list-style: none;-->
+    <!--padding: 0;-->
+    <!--margin-top: 10px;-->
+  <!--}-->
+  <!--.tag_items li {-->
+    <!--display: inline-block;-->
+    <!--padding: 2px 12px;-->
+    <!--font-size: 12px;-->
+    <!--color: #888;-->
+    <!--border: 1px solid #ccc;-->
+    <!-- -webkit-border-radius: 3px;-->
+    <!-- -moz-border-radius: 3px;-->
+    <!--border-radius: 3px;-->
+    <!--margin: 4px;-->
+  <!--}-->
+  <!--.article-title a {-->
+    <!--color: #333;-->
+    <!--font-size: 18px;-->
+    <!--font-weight: 600;-->
+    <!--line-height: 1.3;-->
+  <!--}-->
+  <!--.category-left-article {-->
+    <!--padding: 12px 20px;-->
+  <!--}-->
+  <!--.category-left-title {-->
+    <!--padding: 10px 20px;-->
+    <!--border-bottom: 1px solid #ececec;-->
+    <!--text-transform: uppercase;-->
+    <!--font-weight: 600;-->
+    <!--font-size: 12px;-->
+    <!--letter-spacing: 1px;-->
+  <!--}-->
+    <!--.feed_article_img_wrapper {-->
+        <!--width: 187px;-->
+        <!--float: left;-->
+        <!--margin-right: 20px;-->
+    <!--}-->
+    <!--.feed_article_img_wrapper img {-->
+        <!--width: 100%;-->
+    <!--}-->
+<!--</style>-->
+<!--<body>-->
+<!--<div class="newsroom-header">-->
+  <!--<div><a href="index.html">Thenewsroom</a></div>-->
+<!--</div>-->
+    <!--<div class="category-header">-->
+      <!--<h3>{{category_name}}</h3>-->
+    <!--</div>-->
+  <!--<div class="category-main-wrapper">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-3">-->
+        <!--<div class="category-left-title">-->
+          <!--Trending-->
+        <!--</div>-->
+        <!--<div class="category-left-col">-->
+            <!--{% for trarticle in trend_cont %}-->
+              <!--<div class="category-left-article">-->
+                        <!--<h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/">{{trarticle.title}}</a></h5>-->
+                        <!--<div class="feed-article-lead">-->
+                            <!--{{trarticle.body_html|slice:":100"}}-->
+                        <!--</div>-->
+              <!--</div>-->
+            <!--{% endfor %}-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-md-6">-->
+        <!--<div class="category-articles-inner">-->
+          <!--{%for article in categ_contents%}-->
+              <!--<div class="feed-article">-->
+                  <!--<div class="feed_article_img_wrapper">-->
+                      <!--<a href="/content/view/{{article.id}}/">-->
+                          <!--<img src="{{static_url}}{{article.image.url}}" border="0" alt="Image"/>-->
+                      <!--</a>-->
+                  <!--</div>-->
+                    <!--<div>-->
+                        <!--<h3 class="article-title"><a href="/content/view/{{article.id}}/">{{article.title}}</a></h3>-->
+                    <!--<div class="date-byline">-->
+                      <!--<span>{{article.author}}</span>&middot; <span>{{article.pub_date_strf}}</span>-->
+                    <!--</div>-->
+                    <!--<div class="feed-article-lead">-->
+                        <!--{{article.body_html|slice:":150"}}-->
+                    <!--</div>-->
+                    <!--</div>-->
+              <!--</div>-->
+          <!--{%endfor%}-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-md-3">-->
+          <!--<div class="category-left-title">-->
+          <!--Dont Miss-->
+        <!--</div>-->
+        <!--<div class="category-left-col">-->
+          <!--{%for llarticle in not_miss_cont%}-->
+              <!--<div class="category-left-article">-->
+                        <!--<h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/">{{llarticle.title}}</a></h5>-->
+                        <!--<div class="feed-article-lead">-->
+                            <!--{{llarticle.body_html|slice:":100"}}-->
+                        <!--</div>-->
+              <!--</div>-->
+          <!--{%endfor%}-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--<footer>-->
+    <!--<ul>-->
+        <!--<li><a href="#">About us</a></li>-->
+        <!--<li><a href="#">Contact us</a></li>-->
+        <!--<li><a href="#">Disclaimer</a></li>-->
+        <!--<li><a href="#">© 2018 Newsroom</a></li>-->
+    <!--</ul>-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
