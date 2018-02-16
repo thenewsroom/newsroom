@@ -26,8 +26,8 @@ def company_logo(instance, filename):
 # Create your models here.
 class Advertisement(models.Model):
     name = models.CharField('Headline', max_length=400)
-    created_on = models.DateTimeField('Created on', db_index=True
-    )
+    # created_on = models.DateTimeField('Created on', db_index=True
+    # )
     created_by = models.ForeignKey(User,
             related_name='createdby_user', default=1
     )
