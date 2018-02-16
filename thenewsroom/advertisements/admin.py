@@ -5,12 +5,12 @@ from django.contrib import admin
 from .models import Advertisement, Advertiserdetails
 
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = ('name', 'active',  'created_by',
+    list_display = ('name', 'active', 'created_on',  'created_by',
                     'comments',)
-    list_filter = ( 'active',)
+    list_filter = ('created_on', 'active')
     search_fields = ['name', ]
     fieldsets = ((None, {
-        'fields': (('name', 'comments', 'active',), ('link', 'image',), ( 'created_by'),
+        'fields': (('name', 'comments', 'active',), ('link', 'image',), ('created_on', 'created_by'),
                    )
     }
                   ),
