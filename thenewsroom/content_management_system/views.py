@@ -83,5 +83,17 @@ def story(request, story_id):
 def commingsoon(request):
     return render(request, 'home/home.html', {})
 
+def about_us(request):
+    return render(request, 'newsroom/about-us.html', {})
+
+def contact_us(request):
+    return render(request, 'newsroom/contact-us.html', {})
+
+def copright(request):
+    return render(request, 'newsroom/copyright.html', {})
+
+def disclaimer(request):
+    return render(request, 'newsroom/disclaimer.html', {})
+
 
 

@@ -24,4 +24,8 @@ urlpatterns = [
     url(r'^home/', include('content_management_system.urls'),),
     url(r'^category/', include('content_management_system.urls'),),
     url(r'^content/', include('content_management_system.urls'), ),
+    url(r'^about_us$', views.about_us, name='about_us'),
+    url(r'^contact_us$', views.contact_us, name='contact_us'),
+    url(r'^copyright$', views.copright, name='copright'),
+    url(r'^disclaimer$', views.disclaimer, name='disclaimer'),
 ]
