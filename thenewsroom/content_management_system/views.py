@@ -13,7 +13,7 @@ static_url = "https://thenewsroom.co.in"
 def home(request):
     categories = Category.objects.all()
     advet_content = Advertisement.objects.all()
-    top_picks = Content.objects.filter(top_pick=True)[:5]
+    top_picks = Content.objects.filter(top_pick=True, status=2)[:5]
     sports_contents = Content.objects.filter(category__id=5, status=2).order_by('created_on')[:5]
     odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('created_on')[:5]
     politics_contents = Content.objects.filter(category__id=3, status=2).order_by('created_on')[:5]
