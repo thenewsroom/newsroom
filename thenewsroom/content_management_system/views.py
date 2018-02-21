@@ -33,8 +33,8 @@ def home(request):
                         "wrldc": world_contents[0], "world_contents": world_contents[1:],
                         "photos_contents": photos_contents}
         return render(request, 'newsroom/index.html', content_dict)
-    except:
-        return HttpResponse("publish at least 5 contents from each category.")
+    except Exception as e:
+        return HttpResponse(str(e))
 
 def category_content(request, category_name):
     print category_name
