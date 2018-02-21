@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from category.models import Category, SubCategory
 
 PAYMENT_STATUS = (
     (1, 'Pending'),
@@ -30,6 +31,10 @@ class Advertisement(models.Model):
     created_by = models.ForeignKey(User,
             related_name='createdby_user', default=1
     )
+    category = models.ForeignKey(Category,blank=True, null=True,)
+
+    subcategory = models.ForeignKey(SubCategory,blank=True, null=True,)
+
     comments = models.CharField(max_length=4000, blank=True, null=True)
     active = models.BooleanField(default=True)
     link = models.URLField(max_length=800, blank=True, null=True, db_index=True

@@ -6,7 +6,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-
+# Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=400)
     slug = models.SlugField(
@@ -117,4 +117,20 @@ class TrendingCategory(models.Model):
 
         super(TrendingCategory, self).save(*args, **kwargs)
 
-# Create your models here.
+class RssFeeds(models.Model):
+    name = models.CharField(max_length=400)
+    url = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    created_on = models.DateTimeField(
+        'Created on', db_index=True
+    )
+    comments = models.CharField(max_length=400, blank=True, null=True)
+    active = models.BooleanField(default=True)
+    category = models.ForeignKey(Category)
+
+    class Meta:
+        verbose_name_plural = "Rss Feeds"
+
+    def __unicode__(self):
+        return u'%s-%s' % (self.name, self.url)

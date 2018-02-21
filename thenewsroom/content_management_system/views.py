@@ -43,13 +43,13 @@ def category_content(request, category_name):
         category_name = 'Photo/Video Gallery'
     try:
         category_name = category_name.title()
-        cat_slug = Category.objects.get(name=category_name).slug
+        cat_slug = Category.objects.get(name=category_name).id
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(category__slug=cat_slug, status=2).order_by('created_on')[:10]
-    trending_contents = Content.objects.filter(category__slug=cat_slug, trending=True, status=2).order_by('created_on')[:10]
-    not_miss_contents = Content.objects.filter(category__slug=cat_slug, not_miss=True, status=2).order_by('created_on')[:10]
+    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('created_on')[:10]
+    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('created_on')[:10]
+    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('created_on')[:10]
     print contents.values('id')
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
@@ -61,13 +61,13 @@ def subcategory_content(request, subcategory_name):
     try:
         subcategory_name = subcategory_name.title()
         print subcategory_name
-        subcat_slug = SubCategory.objects.get(name=subcategory_name).slug
+        subcat_slug = SubCategory.objects.get(name=subcategory_name).id
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(subcategory__slug=subcat_slug, status=2).order_by('created_on')[:20]
-    trending_contents = Content.objects.filter(subcategory__slug=subcat_slug, trending=True, status=2).order_by('created_on')[:10]
-    not_miss_contents = Content.objects.filter(subcategory__slug=subcat_slug, not_miss=True, status=2).order_by('created_on')[:10]
+    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('created_on')[:20]
+    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('created_on')[:10]
+    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('created_on')[:10]
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
                                                       "category_name": subcategory_name})
@@ -76,9 +76,15 @@ def story(request, story_id):
     print story_id
     c = Content.objects.get(id=int(story_id))
     advet_content = Advertisement.objects.all()
-    print c.title
+    category_name = c.category.name
+    cid = c.category.id
+    trending_contents = Content.objects.filter(category__id=cid, trending=True, status=2).order_by(
+        'created_on')[:10]
+    not_miss_contents = Content.objects.filter(category__id=cid, not_miss=True, status=2).order_by(
+        'created_on')[:10]
     #return HttpResponse('comming.')
-    return render(request, 'home/home.html', {})
+    return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
+                                                   "trend_cont": trending_contents, "not_miss_cont": not_miss_contents})
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})

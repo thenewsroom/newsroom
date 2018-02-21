@@ -56,7 +56,10 @@ class Content(models.Model):
         max_length=254,
         blank=True,
         null=True,
-        default=''
+        default='https://thenewsroom.co.in/media/uploads/story_image/newsroom-logo-5.png'
+    )
+    story_image = models.URLField(
+        max_length=800, blank=True, db_index=True
     )
     status = models.IntegerField(choices=PUB_STATUS, default=0)
     body_html = models.TextField(blank=True)
