@@ -30,7 +30,7 @@ class CategoryAdmin(admin.ModelAdmin):
                          }
                   ),
                  )
-    inlines = [RssFeedsInline]
+    #inlines = [RssFeedsInline]
 
     def get_actions(self, request):
         actions = super(CategoryAdmin, self).get_actions(request)
