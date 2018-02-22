@@ -6,17 +6,6 @@ from django.contrib import admin
 from .models import Category, SubCategory, Language, TrendingCategory
 
 
-# class RssFeedsInline(admin.TabularInline):
-#     model = RssFeeds
-#     extra = 1
-#     #exclude = ['title']
-#     fieldsets = ((None, {'fields': (('name', 'url', 'active',),
-#                                     )
-#                          }
-#                   ),
-#                  )
-#     #readonly_fields = ('url',)
-
 class CategoryAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'created_on', 'active',)
@@ -30,7 +19,6 @@ class CategoryAdmin(admin.ModelAdmin):
                          }
                   ),
                  )
-    #inlines = [RssFeedsInline]
 
     def get_actions(self, request):
         actions = super(CategoryAdmin, self).get_actions(request)
