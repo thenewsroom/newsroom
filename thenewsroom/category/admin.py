@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import Category, SubCategory, Language, TrendingCategory
-
+from django.contrib import messages
 
 class CategoryAdmin(admin.ModelAdmin):
 
@@ -26,6 +26,14 @@ class CategoryAdmin(admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
+    def save_model(self, request, obj, form, change):
+        if 'name' in form.changed_data and obj.id:
+            name = Category.objects.get(id=obj.id)
+            obj.name = name.name
+            self.message_user(request, "Can not change the name. Kindly contact admin")
+            messages.set_level(request, messages.ERROR)
+        super(CategoryAdmin, self).save_model(request, obj, form, change)
 
 admin.site.register(Category, CategoryAdmin)
 
@@ -49,6 +57,13 @@ class SubCategoryAdmin(admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+    def save_model(self, request, obj, form, change):
+        if 'name' in form.changed_data and obj.id:
+            name = SubCategory.objects.get(id=obj.id)
+            obj.name = name.name
+            self.message_user(request, "Can not change the name. Kindly contact admin")
+            messages.set_level(request, messages.ERROR)
+        super(SubCategoryAdmin, self).save_model(request, obj, form, change)
 
 admin.site.register(SubCategory, SubCategoryAdmin)
 

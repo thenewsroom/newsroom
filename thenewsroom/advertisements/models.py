@@ -55,7 +55,7 @@ class Advertiserdetails(models.Model):
     advertisement = models.ForeignKey(Advertisement)
     name = models.CharField(max_length=400)
     email = models.EmailField(max_length=150)
-    mobile = models.IntegerField()
+    mobile = models.CharField(max_length=15)
     comments = models.TextField(blank=True, null=True)
     active = models.BooleanField(default=True)
     payment_due = models.FloatField(default=0.0)
