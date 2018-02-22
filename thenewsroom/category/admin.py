@@ -3,19 +3,19 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Category, SubCategory, Language, TrendingCategory,RssFeeds
+from .models import Category, SubCategory, Language, TrendingCategory
 
 
-class RssFeedsInline(admin.TabularInline):
-    model = RssFeeds
-    extra = 1
-    #exclude = ['title']
-    fieldsets = ((None, {'fields': (('name', 'url', 'active',),
-                                    )
-                         }
-                  ),
-                 )
-    #readonly_fields = ('url',)
+# class RssFeedsInline(admin.TabularInline):
+#     model = RssFeeds
+#     extra = 1
+#     #exclude = ['title']
+#     fieldsets = ((None, {'fields': (('name', 'url', 'active',),
+#                                     )
+#                          }
+#                   ),
+#                  )
+#     #readonly_fields = ('url',)
 
 class CategoryAdmin(admin.ModelAdmin):
 
