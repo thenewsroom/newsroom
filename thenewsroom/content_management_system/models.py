@@ -58,9 +58,18 @@ class Content(models.Model):
         null=True,
         default='https://thenewsroom.co.in/media/uploads/story_image/newsroom-logo-5.png'
     )
-    # story_image = models.URLField(
-    #     max_length=800, blank=True, db_index=True
-    # )
+    story_image1 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image2 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image3 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image4 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
     status = models.IntegerField(choices=PUB_STATUS, default=0)
     body_html = models.TextField(blank=True)
     published_date = models.DateTimeField('Date published', blank=True, null=True ,db_index=True)
