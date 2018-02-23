@@ -25,7 +25,7 @@ SECRET_KEY = '9qeu%*gehg1ma_1g4x=op$hjcs36uef2xc-thnt_wiqt-s4q0t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','13.127.33.48','localhost','thenewsroom.co.in','www.thenewsroom.co.in','*.thenewsroom.co.in']
+ALLOWED_HOSTS = ['127.0.0.1','13.127.33.48','13.127.186.217''localhost','thenewsroom.co.in','www.thenewsroom.co.in', 'preproduction.thenewsroom.co.in','*.thenewsroom.co.in']
 
 
 # Application definition
