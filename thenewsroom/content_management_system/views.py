@@ -47,9 +47,9 @@ def category_content(request, category_name):
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('created_on')[:10]
-    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('created_on')[:10]
-    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('created_on')[:10]
+    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('created_on')[:100]
+    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('created_on')[:50]
+    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('created_on')[:50]
     print contents.values('id')
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
@@ -65,26 +65,51 @@ def subcategory_content(request, subcategory_name):
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('created_on')[:20]
-    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('created_on')[:10]
-    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('created_on')[:10]
+    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('created_on')[:100]
+    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('created_on')[:50]
+    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('created_on')[:50]
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
                                                       "category_name": subcategory_name})
 
 def story(request, story_id):
     print story_id
+    firstpara = ""
+    secondpara = ""
+    thirdpara = ""
     c = Content.objects.get(id=int(story_id))
     advet_content = Advertisement.objects.all()
     category_name = c.category.name
     cid = c.category.id
+    try:
+        body = c.body_html
+        splitcont = body.split('.')
+        if not len(splitcont) % 3 == 0:
+            for i in range(10):
+                count = len(splitcont) + 1
+                if count % 3 == 0:
+                    break
+        else:
+            count = len(splitcont)
+        fcont = count / 3
+        scount = fcont * 2
+
+        firstpara = '.'.join(splitcont[:fcont])
+        secondpara = '.'.join(splitcont[fcont:scount])
+        thirdpara = '.'.join(splitcont[scount:])
+    except:
+        firstpara = body[:100]
+        secondpara = body[100:300]
+        thirdpara = body[300:]
+
     trending_contents = Content.objects.filter(category__id=cid, trending=True, status=2).order_by(
         'created_on')[:10]
     not_miss_contents = Content.objects.filter(category__id=cid, not_miss=True, status=2).order_by(
         'created_on')[:10]
     #return HttpResponse('comming.')
     return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
-                                                   "trend_cont": trending_contents, "not_miss_cont": not_miss_contents})
+                                                   "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
+                                                   'firstpara':firstpara, 'secondpara':secondpara, 'thirdpara':thirdpara})
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})

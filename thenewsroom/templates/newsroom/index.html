@@ -612,19 +612,45 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                 <h1>{{top_picks1.title}}</h1>
                 <div class="img-thumb">
                     <a href="/content/view/{{top_picks1.id}}/" target="_blank">
-                        <img src="{{static_url}}{{top_picks1.image.url}}"/>
+                        {% if top_picks1.image %}
+                            <img src="{{static_url}}{{top_picks1.image.url}}"/>
+                        {% elif top_picks1.story_image1 %}
+                            <img src="{{top_picks1.story_image1}}"/>
+                        {% else %}
+                            <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                        {% endif%}
                     </a>
                 </div>
             </li>
             {% for tpstory in top_picks %}
-            <li>
-              <div class="img-thumb">
-                  <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
-              </div>
-              <h3>
-                  <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
-              </h3>
-            </li>
+              {% if tpstory.image %}
+                <li>
+                  <div class="img-thumb">
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
+                  </div>
+                  <h3>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                  </h3>
+                </li>
+              {% elif tpstory.story_image1 %}
+                <li>
+                  <div class="img-thumb">
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{tpstory.story_image1}}" border="0"/></a>
+                  </div>
+                  <h3>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                  </h3>
+                </li>
+              {% else %}
+                <li>
+                  <div class="img-thumb">
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0"/></a>
+                  </div>
+                  <h3>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                  </h3>
+                </li>
+              {% endif%}
             {% endfor %}
           </ul>
         </div>
@@ -645,7 +671,17 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                             {{plc.title|slice:":30"}}
                         </a>
                   </h3>
-                  <div class="col-img-detail"><a href="/content/view/{{plc.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{plc.image.url}}" border="0" style="display: block;"/></a></div>
+                  <div class="col-img-detail">
+                      <a href="/content/view/{{plc.id}}/" target="_blank">
+                          {% if plc.image %}
+                              <img class="imgbrd lazy" src="{{static_url}}{{plc.image.url}}" border="0" style="display: block;"/>
+                          {% elif plc.story_image1 %}
+                              <img class="imgbrd lazy" src="{{plc.story_image1}}" border="0" style="display: block;"/>
+                          {% else %}
+                              <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                          {% endif%}
+                      </a>
+                  </div>
               </div>
               <ul class="news-ul">
                 {% for pstory in politics_contents %}
@@ -656,7 +692,15 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                             </a>
                       </h4>
                       <div class="col-img-thumb">
-                            <a href="/content/view/{{pstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{pstory.image.url}}" border="0" style="display: block;"/></a>
+                          <a href="/content/view/{{pstory.id}}/" target="_blank">
+                                {% if pstory.image %}
+                                  <img class="imgbrd lazy" src="{{static_url}}{{pstory.image.url}}" border="0" style="display: block;"/>
+                                {% elif pstory.story_image1 %}
+                                  <img class="imgbrd lazy" src="{{pstory.story_image1}}" border="0" style="display: block;"/>
+                                {% else %}
+                                  <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                                {% endif%}
+                          </a>
                       </div>
                   </li>
                 {% endfor %}
@@ -677,7 +721,15 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                                       </a>
                                 </h4>
                                 <div class="col-img-thumb">
-                                      <a href="/content/view/{{ecstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{ecstory.image.url}}" border="0" style="display: block;"/></a>
+                                      <a href="/content/view/{{ecstory.id}}/" target="_blank">
+                                          {% if ecstory.image %}
+                                              <img class="imgbrd lazy" src="{{static_url}}{{ecstory.image.url}}" border="0" style="display: block;"/>
+                                          {% elif ecstory.story_image1 %}
+                                              <img class="imgbrd lazy" src="{{ecstory.story_image1}}" border="0" style="display: block;"/>
+                                          {% else %}
+                                              <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                                          {% endif%}
+                                      </a>
                                 </div>
                             </li>
                     {% endfor %}
@@ -695,7 +747,17 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                               {{sp1.title|slice:":30"}}
                           </a>
                     </h3>
-                    <div class="col-img-detail"><a href="/content/view/{{sp1.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{sp1.image.url}}" border="0" style="display: block;"/></a></div>
+                    <div class="col-img-detail">
+                        <a href="/content/view/{{sp1.id}}/" target="_blank">
+                            {% if sp1.image %}
+                              <img class="imgbrd lazy" src="{{static_url}}{{sp1.image.url}}" border="0" style="display: block;"/>
+                            {% elif sp1.story_image1 %}
+                                <img class="imgbrd lazy" src="{{sp1.story_image1}}" border="0" style="display: block;"/>
+                            {% else %}
+                                <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                            {% endif%}
+                        </a>
+                    </div>
                 </div>
                 <ul class="news-ul">
                   {% for spostory in sports_contents %}
@@ -706,7 +768,15 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                               </a>
                         </h4>
                         <div class="col-img-thumb">
-                              <a href="/content/view/{{spostory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{spostory.image.url}}" border="0" style="display: block;"/></a>
+                            <a href="/content/view/{{spostory.id}}/" target="_blank">
+                                {% if spostory.image %}
+                                  <img class="imgbrd lazy" src="{{static_url}}{{spostory.image.url}}" border="0" style="display: block;"/>
+                                {% elif spostory.story_image1 %}
+                                  <img class="imgbrd lazy" src="{{spostory.story_image1}}" border="0" style="display: block;"/>
+                                {% else %}
+                                  <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                                {% endif%}
+                            </a>
                         </div>
                     </li>
                   {% endfor %}
@@ -727,7 +797,14 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                                         </a>
                                   </h4>
                                   <div class="col-img-thumb">
-                                        <a href="/content/view/{{entstory.id}}/" target="_blank"><img class="imgbrd lazy" src="{{static_url}}{{entstory.image.url}}" border="0" style="display: block;"/></a>
+                                        <a href="/content/view/{{entstory.id}}/" target="_blank"></a>
+                                          {% if entstory.image %}
+                                            <img class="imgbrd lazy" src="{{static_url}}{{entstory.image.url}}" border="0" style="display: block;"/>
+                                          {% elif entstory.story_image1 %}
+                                            <img class="imgbrd lazy" src="{{entstory.story_image1}}" border="0" style="display: block;"/>
+                                          {% else %}
+                                            <img class="imgbrd lazy" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" style="display: block;"/>
+                                          {% endif%}
                                   </div>
                               </li>
                           {% endfor %}
@@ -752,7 +829,13 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                     <div class="opinion-img-thumb">
                         <div>
                             <a href="/content/view/{{opnstory.id}}/" target="_blank">
-                                <img src="{{static_url}}{{opnstory.image.url}}"/>
+                                {% if opnstory.image %}
+                                    <img src="{{static_url}}{{opnstory.image.url}}"/>
+                                {% elif opnstory.story_image1 %}
+                                    <img src="{{opnstory.story_image1}}"/>
+                                {% else %}
+                                    <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                                {% endif%}
                             </a>
                         </div>
                     </div>
@@ -773,14 +856,28 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                 <h1>{{indcon.title|slice:":30"}}</h1>
                 <div class="img-thumb">
                     <a href="/content/view/{{indcon.id}}/" target="_blank">
-                        <img src="{{static_url}}{{indcon.image.url}}"/>
+                        {% if indcon.image %}
+                            <img src="{{static_url}}{{indcon.image.url}}"/>
+                        {% elif indcon.story_image1 %}
+                            <img src="{{indcon.story_image1}}"/>
+                        {% else %}
+                            <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                        {% endif%}
                     </a>
                 </div>
             </li>
             {% for indstory in india_contents %}
               <li>
                 <div class="img-thumb">
-                    <a href="/content/view/{{indstory.id}}/" target="_blank"><img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{indstory.image.url}}" border="0"/></a>
+                    <a href="/content/view/{{indstory.id}}/" target="_blank">
+                        {% if indstory.image %}
+                            <img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{indstory.image.url}}" border="0"/>
+                        {% elif indstory.story_image1 %}
+                            <img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{indstory.story_image1}}" border="0"/>
+                        {% else %}
+                            <img class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                        {% endif%}
+                    </a>
                 </div>
                 <h2><a href="/content/view/{{indstory.id}}/" target="_blank" class="item-title">{{indstory.title|slice:":30"}}</a></h2>
               </li>
@@ -803,14 +900,28 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                 <h1>{{wrldc.title|slice:":30"}}</h1>
                 <div class="img-thumb">
                     <a href="/content/view/{{wrldc.id}}/" target="_blank">
-                        <img src="{{static_url}}{{wrldc.image.url}}"/>
+                        {% if wrldc.image %}
+                            <img src="{{static_url}}{{wrldc.image.url}}"/>
+                        {% elif wrldc.story_image1 %}
+                            <img src="{{wrldc.story_image1}}"/>
+                        {% else %}
+                            <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                        {% endif%}
                     </a>
                 </div>
             </li>
             {% for wrlstory in world_contents %}
               <li>
                 <div class="img-thumb">
-                  <a href="/content/view/{{wrlstory.id}}/" target="_blank"><img class="imgbrd" src="{{static_url}}{{wrlstory.image.url}}" border="0"></a>
+                  <a href="/content/view/{{wrlstory.id}}/" target="_blank">
+                      {% if wrlstory.image %}
+                          <img class="imgbrd" src="{{static_url}}{{wrlstory.image.url}}" border="0">
+                      {% elif wrlstory.story_image1 %}
+                          <img class="imgbrd" src="{{wrlstory.story_image1}}" border="0">
+                      {% else %}
+                          <img class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png"/>
+                      {% endif%}
+                  </a>
                 </div>
                 <h2><a href="/content/view/{{wrlstory.id}}/" target="_blank" class="item-title">{{wrlstory.title|slice:":30"}}</a></h2>
               </li>
@@ -821,63 +932,6 @@ footer ul a, footer ul a:hover, footer ul a:focus {
 
         </div>
       </div>
-      <div class="row-photos">
-           <h2 class="section-header">
-              <a href="/category/c/photogallery/" target="_blank">
-                  <span>Photos</span>
-              </a>
-          </h2>
-          <div class="newsroom-gallery-left-col">
-              <div class="gallery-inner">
-                  <ul>
-                      <li>
-                          <div class="img-thumb">
-                              <a href="">
-                                  <img src="https://images.taboola.com/taboola/image/fetch/f_jpg%2Cq_auto%2Ch_240%2Cw_360%2Cc_fill%2Cg_faces:auto%2Ce_sharpen/http%3A//cdn.taboola.com/libtrc/static/thumbnails/0382810df956b76cd328566cca42549f.jpg">
-                              </a>
-                          </div>
-                          <h3>
-                              <a href="http://movies.ndtv.com/photos/inside-shamita-shettys-birthday-party-55502" data-tb-shadow-region-link="1">How Sobha Ltd. is changing perceptions about Dwarka Expressway?</a>
-                          </h3>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-          <div class="newsroom-gallery-right-col">
-              <ul>
-                  <li>
-                      <div class="img-thumb">
-                          <a href="#">
-                              <img src="https://drop.ndtv.com/images/homepage/270x300_636531707410447836.jpg?output-quality=70&output-format=jpg">
-                          </a>
-                      </div>
-                      <h6>
-                          <a href="">11 Times Sushmita Sen's Insta Was Full Of Golden Life Advice</a>
-                      </h6>
-                  </li>
-                  <li>
-                      <div class="img-thumb">
-                          <a href="#">
-                              <img src="https://drop.ndtv.com/albums/ENTERTAINMENT/anitadongrelakmefashionweek/800-600_640x480.jpg?downsize=222:167&output-quality=90&output-format=jpg">
-                          </a>
-                      </div>
-                      <h6>
-                          <a href="">Sagarika Ghatge, Shamita Shetty In Shades Of Pastel</a>
-                      </h6>
-                  </li>
-                  <li>
-                      <div class="img-thumb">
-                          <a href="#">
-                              <img src="https://drop.ndtv.com/images/homepage/air_pollution_650_jpg_636530950162434453.jpg?output-quality=70&output-format=jpg">
-                          </a>
-                      </div>
-                      <h6>
-                          <a href="">Air Pollution ‘A Cause Of Concern', Budget 2018 Announces Special Schemes To Tackle Stubble Burning</a>
-                      </h6>
-                  </li>
-              </ul>
-          </div>
-      </div>
     </div>
 </section>
 <footer>
@@ -885,7 +939,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
         <li><a href="/about_us" target="_blank">About us</a></li>
         <li><a href="/contact_us" target="_blank">Contact us</a></li>
         <li><a href="/disclaimer" target="_blank">Disclaimer</a></li>
-        <li><a href="/copyright" target="_blank">© 2018 Newsroom</a></li>
+        <li><a href="/copyright" target="_blank">© 2018 Thenewsroom</a></li>
     </ul>
 </footer>
 

@@ -27,6 +27,10 @@ class ContentAdminForm(forms.ModelForm):
         title = cleaned_data.get('title')
         slug = cleaned_data.get('slug')
         pub_date = cleaned_data.get('published_date')
+        body = cleaned_data.get('body_html')
+        s = len(body.split('.'))
+        if s < 8:
+            self._errors['body_html'] = ErrorList([mark_safe("Word count minimum error")])
         if not slug:
             slug = slugify(title)
         storyQs = Content.objects.only('id', 'slug').filter(slug=slug)
