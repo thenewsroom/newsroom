@@ -11,18 +11,17 @@ static_url = "https://thenewsroom.co.in"
 # Create your views here.
 
 def home(request):
-    categories = Category.objects.all()
     advet_content = Advertisement.objects.all()
     top_picks = Content.objects.filter(top_pick=True, status=2)[:5]
-    sports_contents = Content.objects.filter(category__id=5, status=2).order_by('created_on')[:5]
-    odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('created_on')[:5]
-    politics_contents = Content.objects.filter(category__id=3, status=2).order_by('created_on')[:5]
-    economy_contents = Content.objects.filter(category__id=4, status=2).order_by('created_on')[:5]
-    entertain_contents = Content.objects.filter(category__id=6, status=2).order_by('created_on')[:5]
-    opinion_contents = Content.objects.filter(category__id=7, status=2).order_by('created_on')[:5]
-    india_contents = Content.objects.filter(category__id=8, status=2).order_by('created_on')[:5]
-    world_contents = Content.objects.filter(category__id=9, status=2).order_by('created_on')[:5]
-    photos_contents = Content.objects.filter(category__id=10, status=2).order_by('created_on')[:5]
+    sports_contents = Content.objects.filter(category__id=5, status=2).order_by('published_date')[:5]
+    odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('published_date')[:5]
+    politics_contents = Content.objects.filter(category__id=3, status=2).order_by('published_date')[:5]
+    economy_contents = Content.objects.filter(category__id=4, status=2).order_by('published_date')[:5]
+    entertain_contents = Content.objects.filter(category__id=6, status=2).order_by('published_date')[:5]
+    opinion_contents = Content.objects.filter(category__id=7, status=2).order_by('published_date')[:5]
+    india_contents = Content.objects.filter(category__id=8, status=2).order_by('published_date')[:5]
+    world_contents = Content.objects.filter(category__id=9, status=2).order_by('published_date')[:5]
+    photos_contents = Content.objects.filter(category__id=10, status=2).order_by('published_date')[:5]
     try:
         content_dict = {"static_url": static_url, "top_picks": top_picks[1:], "top_picks1": top_picks[0],
                         "sports_contents": sports_contents[1:],
@@ -47,9 +46,9 @@ def category_content(request, category_name):
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('created_on')[:100]
-    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('created_on')[:50]
-    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('created_on')[:50]
+    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('published_date')[:100]
+    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('published_date')[:30]
+    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('published_date')[:30]
     print contents.values('id')
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
@@ -65,9 +64,9 @@ def subcategory_content(request, subcategory_name):
     except Exception as e:
         return HttpResponse(str(e))
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('created_on')[:100]
-    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('created_on')[:50]
-    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('created_on')[:50]
+    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('published_date')[:100]
+    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('published_date')[:30]
+    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('published_date')[:30]
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
                                                       "category_name": subcategory_name})
@@ -103,9 +102,9 @@ def story(request, story_id):
         thirdpara = body[300:]
 
     trending_contents = Content.objects.filter(category__id=cid, trending=True, status=2).order_by(
-        'created_on')[:10]
+        'published_date')[:30]
     not_miss_contents = Content.objects.filter(category__id=cid, not_miss=True, status=2).order_by(
-        'created_on')[:10]
+        'published_date')[:30]
     #return HttpResponse('comming.')
     return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
                                                    "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
@@ -113,6 +112,38 @@ def story(request, story_id):
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})
+
+def PhotoGallery(request):
+    photocontents = Content.objects.filter(status=2).order_by('published_date')[:50]
+    images = []
+    for img in photocontents:
+        if img.image:
+            images.append(static_url + img.image.url)
+        if img.story_image1:
+            images.append(img.story_image1)
+        if img.story_image2:
+            images.append(img.story_image2)
+    category_name = 'Photo/Video Gallery'
+    trending_contents = Content.objects.filter(trending=True, status=2).order_by('published_date')[
+                        :30]
+    not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by('published_date')[
+                        :30]
+    return render(request, 'newsroom/photo.html',
+                  {"static_url": static_url,"category_name": category_name, 'image_contents': images, "trend_cont": trending_contents,
+                   "not_miss_cont": not_miss_contents, 'img_actv': images[0]})
+
+def top_picks(request):
+    advet_content = Advertisement.objects.all()
+    contents = Content.objects.filter(top_pick=True, status=2).order_by('published_date')[:100]
+    trending_contents = Content.objects.filter(trending=True, status=2).order_by(
+        'published_date')[:30]
+    not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by(
+        'published_date')[:30]
+    category_name = 'Top Picks'
+    return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
+                                                      "trend_cont": trending_contents,
+                                                      "not_miss_cont": not_miss_contents,
+                                                      "category_name": category_name})
 
 def about_us(request):
     return render(request, 'newsroom/about-us.html', {})
