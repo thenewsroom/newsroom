@@ -10,7 +10,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
     list_filter = ('created_on', 'active')
     search_fields = ['name', ]
     fieldsets = ((None, {
-        'fields': (('name', 'comments', 'active',), ('link', 'image',), ('created_on', 'created_by'),('category', 'subcategory')
+        'fields': (('name', 'comments', 'active',), ('link', 'image',), ('created_on', 'created_by'),('category', 'subcateg', 'story',)
                    )
     }
                   ),
