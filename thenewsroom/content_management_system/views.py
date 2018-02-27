@@ -6,22 +6,23 @@ from django.http import HttpResponse
 from .models import Content
 from category.models import Category,SubCategory,Language
 from advertisements.models import Advertisement, Advertiserdetails
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 static_url = "https://thenewsroom.co.in"
 
 # Create your views here.
 
 def home(request):
-    advet_content = Advertisement.objects.all()
-    top_picks = Content.objects.filter(top_pick=True, status=2)[:5]
-    sports_contents = Content.objects.filter(category__id=5, status=2).order_by('published_date')[:5]
-    odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('published_date')[:5]
-    politics_contents = Content.objects.filter(category__id=3, status=2).order_by('published_date')[:5]
-    economy_contents = Content.objects.filter(category__id=4, status=2).order_by('published_date')[:5]
-    entertain_contents = Content.objects.filter(category__id=6, status=2).order_by('published_date')[:5]
-    opinion_contents = Content.objects.filter(category__id=7, status=2).order_by('published_date')[:5]
-    india_contents = Content.objects.filter(category__id=8, status=2).order_by('published_date')[:5]
-    world_contents = Content.objects.filter(category__id=9, status=2).order_by('published_date')[:5]
-    photos_contents = Content.objects.filter(category__id=10, status=2).order_by('published_date')[:5]
+    advet_content = Advertisement.objects.filter(active=True,category=False, subcateg=False)
+    top_picks = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:5]
+    sports_contents = Content.objects.filter(category__id=5, status=2).order_by('-published_date')[:5]
+    odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('-published_date')[:5]
+    politics_contents = Content.objects.filter(category__id=3, status=2).order_by('-published_date')[:5]
+    economy_contents = Content.objects.filter(category__id=4, status=2).order_by('-published_date')[:5]
+    entertain_contents = Content.objects.filter(category__id=6, status=2).order_by('-published_date')[:5]
+    opinion_contents = Content.objects.filter(category__id=7, status=2).order_by('-published_date')[:5]
+    india_contents = Content.objects.filter(category__id=8, status=2).order_by('-published_date')[:5]
+    world_contents = Content.objects.filter(category__id=9, status=2).order_by('-published_date')[:5]
+    photos_contents = Content.objects.filter(category__id=10, status=2).order_by('-published_date')[:5]
     try:
         content_dict = {"static_url": static_url, "top_picks": top_picks[1:], "top_picks1": top_picks[0],
                         "sports_contents": sports_contents[1:],
@@ -30,14 +31,13 @@ def home(request):
                         "entertain_contents": entertain_contents,
                         "opinion_contents": opinion_contents, "indcon": india_contents[0], "india_contents": india_contents[1:],
                         "wrldc": world_contents[0], "world_contents": world_contents[1:],
-                        "photos_contents": photos_contents}
+                        "photos_contents": photos_contents, 'advet_content': advet_content}
         return render(request, 'newsroom/index.html', content_dict)
     except Exception as e:
         return HttpResponse(str(e))
 
 def category_content(request, category_name):
-    print category_name
-    #return HttpResponse('comming.')
+    page = request.GET.get('page', 1)
     if category_name == 'photogallery':
         category_name = 'Photo/Video Gallery'
     try:
@@ -45,31 +45,43 @@ def category_content(request, category_name):
         cat_slug = Category.objects.get(name=category_name).id
     except Exception as e:
         return HttpResponse(str(e))
-    advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('published_date')[:100]
-    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('published_date')[:30]
-    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('published_date')[:30]
-    print contents.values('id')
+    advet_content = Advertisement.objects.filter(active=True, category=True, subcateg=False)
+    contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('-published_date')[:100]
+    paginator = Paginator(contents, 20)
+    try:
+        contents = paginator.page(page)
+    except PageNotAnInteger:
+        contents = paginator.page(1)
+    except EmptyPage:
+        contents = paginator.page(paginator.num_pages)
+    trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('-published_date')[:30]
+    not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('-published_date')[:30]
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                      "category_name": category_name})
+                                                      "category_name": category_name, 'advet_content': advet_content})
 
 def subcategory_content(request, subcategory_name):
-    print subcategory_name
+    page = request.GET.get('page', 1)
     #return HttpResponse('comming.')
     try:
         subcategory_name = subcategory_name.title()
-        print subcategory_name
         subcat_slug = SubCategory.objects.get(name=subcategory_name).id
     except Exception as e:
         return HttpResponse(str(e))
-    advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('published_date')[:100]
-    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('published_date')[:30]
-    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('published_date')[:30]
+    advet_content = Advertisement.objects.filter(active=True, category=False, subcateg=True)
+    contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('-published_date')[:100]
+    paginator = Paginator(contents, 20)
+    try:
+        contents = paginator.page(page)
+    except PageNotAnInteger:
+        contents = paginator.page(1)
+    except EmptyPage:
+        contents = paginator.page(paginator.num_pages)
+    trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('-published_date')[:30]
+    not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('-published_date')[:30]
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                      "category_name": subcategory_name})
+                                                      "category_name": subcategory_name, 'advet_content': advet_content})
 
 def story(request, story_id):
     print story_id
@@ -77,7 +89,7 @@ def story(request, story_id):
     secondpara = ""
     thirdpara = ""
     c = Content.objects.get(id=int(story_id))
-    advet_content = Advertisement.objects.all()
+    advet_content = Advertisement.objects.filter(active=True, story=True)
     category_name = c.category.name
     cid = c.category.id
     try:
@@ -102,19 +114,19 @@ def story(request, story_id):
         thirdpara = body[300:]
 
     trending_contents = Content.objects.filter(category__id=cid, trending=True, status=2).order_by(
-        'published_date')[:30]
+        '-published_date')[:30]
     not_miss_contents = Content.objects.filter(category__id=cid, not_miss=True, status=2).order_by(
-        'published_date')[:30]
-    #return HttpResponse('comming.')
+        '-published_date')[:30]
     return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
                                                    "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                   'firstpara':firstpara, 'secondpara':secondpara, 'thirdpara':thirdpara})
+                                                   'firstpara':firstpara, 'secondpara':secondpara, 'thirdpara':thirdpara,
+                                                   'advet_content': advet_content})
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})
 
 def PhotoGallery(request):
-    photocontents = Content.objects.filter(status=2).order_by('published_date')[:50]
+    photocontents = Content.objects.filter(status=2).order_by('-published_date')[:50]
     images = []
     for img in photocontents:
         if img.image:
@@ -124,21 +136,29 @@ def PhotoGallery(request):
         if img.story_image2:
             images.append(img.story_image2)
     category_name = 'Photo/Video Gallery'
-    trending_contents = Content.objects.filter(trending=True, status=2).order_by('published_date')[
+    trending_contents = Content.objects.filter(trending=True, status=2).order_by('-published_date')[
                         :30]
-    not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by('published_date')[
+    not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by('-published_date')[
                         :30]
     return render(request, 'newsroom/photo.html',
                   {"static_url": static_url,"category_name": category_name, 'image_contents': images, "trend_cont": trending_contents,
                    "not_miss_cont": not_miss_contents, 'img_actv': images[0]})
 
 def top_picks(request):
+    page = request.GET.get('page', 1)
     advet_content = Advertisement.objects.all()
-    contents = Content.objects.filter(top_pick=True, status=2).order_by('published_date')[:100]
+    contents = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:100]
+    paginator = Paginator(contents, 20)
+    try:
+        contents = paginator.page(page)
+    except PageNotAnInteger:
+        contents = paginator.page(1)
+    except EmptyPage:
+        contents = paginator.page(paginator.num_pages)
     trending_contents = Content.objects.filter(trending=True, status=2).order_by(
-        'published_date')[:30]
+        '-published_date')[:30]
     not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by(
-        'published_date')[:30]
+        '-published_date')[:30]
     category_name = 'Top Picks'
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents,

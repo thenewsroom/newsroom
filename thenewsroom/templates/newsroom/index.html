@@ -552,6 +552,39 @@ footer ul a, footer ul a:hover, footer ul a:focus {
     font-size: 18px;
     letter-spacing: 1px;
 }
+.article-title.full-article-title a {
+  font-size: 20px;
+}
+.full-article .feed-article-lead {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 15px;
+}
+.ad-cont-1 {
+  position: absolute;
+  top: 66px;
+  right: 0;
+  height: 250px;
+  width: 250px;
+  border: 1px solid #00aecd;
+  padding: 4px;
+}
+.ad-cont-1 img {
+height: 100%;
+width: 100%;
+position: absolute;;
+}}
+.close-ad {
+  color: #00aecd;
+  float: right;
+  background: #dadada;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
 
  #nav-items-wrapper .nav-dropdown-wrapper>a{
  color: #fff;
@@ -655,7 +688,14 @@ footer ul a, footer ul a:hover, footer ul a:focus {
           </ul>
         </div>
         <div class="col-xs-3">
-            
+            <div class="ad-cont ad-cont-1">
+                <div>
+                    <span class="close-ad">X</span>
+                    <a href='{{advet_content|slice:"0"}}.link'>
+                        <img src='{{static_url}}{{advet_content|slice:"0"}}.image.url' >
+                    </a>
+                </div>
+            </div>
         </div>
       </div>
       <div class="row-col-4">
@@ -809,6 +849,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                               </li>
                           {% endfor %}
                           </ul>
+
                 </div>
       </div>
       <div class="row-opinion">
@@ -885,7 +926,14 @@ footer ul a, footer ul a:hover, footer ul a:focus {
           </ul>
         </div>
         <div class="col-xs-3">
-
+            <div class="ad-cont ad-cont-1">
+                <div>
+                    <span class="close-ad">X</span>
+                    <a href='{{advet_content|slice:"1"}}.link'>
+                        <img src='{{static_url}}{{advet_content|slice:"1"}}.image.url' >
+                    </a>
+                </div>
+            </div>
         </div>
       </div>
       <div class="row row-gen row-world">
@@ -929,6 +977,14 @@ footer ul a, footer ul a:hover, footer ul a:focus {
           </ul>
         </div>
         <div class="col-xs-3">
+            <div class="ad-cont ad-cont-1">
+                <div>
+                    <span class="close-ad">X</span>
+                    <a href='{{advet_content|slice:"2"}}.link'>
+                        <img src='{{static_url}}{{advet_content|slice:"2"}}.image.url' >
+                    </a>
+                </div>
+            </div>
 
         </div>
       </div>
@@ -962,6 +1018,9 @@ function stickNav() {
     navbar.classList.remove("sticky-nav");
   }
 }
+$(".close-ad").click(function() {
+  $(this).parents('div.ad-cont').hide();
+})
 </script>
 </body>
 </html>

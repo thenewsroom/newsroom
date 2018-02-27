@@ -632,6 +632,20 @@ footer ul a, footer ul a:hover, footer ul a:focus {
     .feed_article_img_wrapper img {
         width: 100%;
     }
+    .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    }
+
+    .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
 <body>
 <div class="newsroom-header">
@@ -704,6 +718,15 @@ footer ul a, footer ul a:hover, footer ul a:focus {
           {%endfor%}
         </div>
       </div>
+    </div>
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="?page=1">1</a>
+      <a class="active" href="?page=2">2</a>
+      <a href="?page=3">3</a>
+      <a href="?page=4">4</a>
+      <a href="?page=5">5</a>
+      <a href="#">&raquo;</a>
     </div>
   </div>
 <footer>
