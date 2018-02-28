@@ -24,6 +24,22 @@ def home(request):
     world_contents = Content.objects.filter(category__id=9, status=2).order_by('-published_date')[:5]
     photos_contents = Content.objects.filter(category__id=10, status=2).order_by('-published_date')[:5]
     try:
+        ad1url,ad1img,ad2url,ad2img,ad3url,ad3img = '','','','','',''
+        ad1 = Advertisement.objects.get(id=2)
+        if ad1:
+            ad1url = ad1.link
+            ad1img = static_url + ad1.image.url
+        ad2 = Advertisement.objects.get(id=3)
+        if ad2:
+            ad2url = ad2.link
+            ad2img = static_url + ad2.image.url
+        ad3 = Advertisement.objects.get(id=4)
+        if ad3:
+            ad3url = ad3.link
+            ad3img = static_url + ad3.image.url
+    except:
+        pass
+    try:
         content_dict = {"static_url": static_url, "top_picks": top_picks[1:], "top_picks1": top_picks[0],
                         "sports_contents": sports_contents[1:],
                         "sp1": sports_contents[0],"odisha_contents": odisha_contents,
@@ -31,7 +47,8 @@ def home(request):
                         "entertain_contents": entertain_contents,
                         "opinion_contents": opinion_contents, "indcon": india_contents[0], "india_contents": india_contents[1:],
                         "wrldc": world_contents[0], "world_contents": world_contents[1:],
-                        "photos_contents": photos_contents, 'advet_content': advet_content}
+                        "photos_contents": photos_contents, "ad1url": ad1url, "ad1img": ad1img,"ad2url": ad2url,"ad2img": ad2img,
+                        "ad3url": ad3url,"ad3img": ad3img}
         return render(request, 'newsroom/index.html', content_dict)
     except Exception as e:
         return HttpResponse(str(e))
