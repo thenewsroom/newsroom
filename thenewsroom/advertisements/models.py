@@ -31,7 +31,6 @@ class Advertisement(models.Model):
     created_by = models.ForeignKey(User,
             related_name='createdby_user', default=1
     )
-    category = models.BooleanField(default=False)
     is_category = models.BooleanField(default=False)
 
     subcateg = models.BooleanField(default=False)
