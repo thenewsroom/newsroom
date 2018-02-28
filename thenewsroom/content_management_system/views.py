@@ -12,7 +12,7 @@ static_url = "https://thenewsroom.co.in"
 # Create your views here.
 
 def home(request):
-    advet_content = Advertisement.objects.filter(active=True,category=False, subcateg=False)
+    advet_content = Advertisement.objects.filter(active=True,is_category=False, subcateg=False)
     top_picks = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:5]
     sports_contents = Content.objects.filter(category__id=5, status=2).order_by('-published_date')[:5]
     odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('-published_date')[:5]
@@ -62,7 +62,7 @@ def category_content(request, category_name):
         cat_slug = Category.objects.get(name=category_name).id
     except Exception as e:
         return HttpResponse(str(e))
-    advet_content = Advertisement.objects.filter(active=True, category=True, subcateg=False)
+    advet_content = Advertisement.objects.filter(active=True, is_category=True, subcateg=False)
     contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('-published_date')[:100]
     paginator = Paginator(contents, 20)
     try:
@@ -85,7 +85,7 @@ def subcategory_content(request, subcategory_name):
         subcat_slug = SubCategory.objects.get(name=subcategory_name).id
     except Exception as e:
         return HttpResponse(str(e))
-    advet_content = Advertisement.objects.filter(active=True, category=False, subcateg=True)
+    advet_content = Advertisement.objects.filter(active=True, is_category=False, subcateg=True)
     contents = Content.objects.filter(subcategory__id=subcat_slug, status=2).order_by('-published_date')[:100]
     paginator = Paginator(contents, 20)
     try:
