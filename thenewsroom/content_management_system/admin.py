@@ -33,6 +33,7 @@ class ContentAdmin(admin.ModelAdmin):
                 obj.published_by = request.user
             obj.approved_on = datetime.now()
             obj.approved_by = request.user
+        obj.updated_on = datetime.now()
         super(ContentAdmin, self).save_model(request, obj, form, change)
 admin.site.register(Content, ContentAdmin)
 
