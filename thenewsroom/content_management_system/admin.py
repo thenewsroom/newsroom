@@ -5,6 +5,7 @@ from django.contrib import admin
 from .models import Content, ContentLoadStatus
 from django import forms
 from .forms import ContentAdminForm
+from datetime import datetime
 
 class ContentAdmin(admin.ModelAdmin):
     form = ContentAdminForm
@@ -25,6 +26,14 @@ class ContentAdmin(admin.ModelAdmin):
 
     #inlines = [OrderedProductInline]
     readonly_fields = ('updated_on', 'created_on',)
+
+    def save_model(self, request, obj, form, change):
+        if obj.status in [2,-1]:
+            if obj.status == 2:
+                obj.published_by = request.user
+            obj.approved_on = datetime.now()
+            obj.approved_by = request.user
+        super(ContentAdmin, self).save_model(request, obj, form, change)
 admin.site.register(Content, ContentAdmin)
 
 class ContentLoadStatusAdmin(admin.ModelAdmin):
