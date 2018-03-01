@@ -12,7 +12,6 @@ static_url = "https://thenewsroom.co.in"
 # Create your views here.
 
 def home(request):
-    advet_content = Advertisement.objects.filter(active=True,is_category=False, subcateg=False)
     top_picks = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:5]
     sports_contents = Content.objects.filter(category__id=5, status=2).order_by('-published_date')[:5]
     odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('-published_date')[:5]
@@ -25,18 +24,18 @@ def home(request):
     photos_contents = Content.objects.filter(category__id=10, status=2).order_by('-published_date')[:5]
     try:
         ad1url,ad1img,ad2url,ad2img,ad3url,ad3img = '','','','','',''
-        ad1 = Advertisement.objects.get(id=2)
+        ad1 = Advertisement.objects.filter(id=2,active=True,is_category=False, subcateg=False)
         if ad1:
-            ad1url = ad1.link
-            ad1img = static_url + ad1.image.url
-        ad2 = Advertisement.objects.get(id=3)
+            ad1url = ad1[0].link
+            ad1img = static_url + ad1[0].image.url
+        ad2 = Advertisement.objects.filter(id=3,active=True,is_category=False, subcateg=False)
         if ad2:
-            ad2url = ad2.link
-            ad2img = static_url + ad2.image.url
-        ad3 = Advertisement.objects.get(id=4)
+            ad2url = ad2[0].link
+            ad2img = static_url + ad2[0].image.url
+        ad3 = Advertisement.objects.filter(id=4,active=True,is_category=False, subcateg=False)
         if ad3:
-            ad3url = ad3.link
-            ad3img = static_url + ad3.image.url
+            ad3url = ad3[0].link
+            ad3img = static_url + ad3[0].image.url
     except:
         pass
     try:
@@ -62,7 +61,6 @@ def category_content(request, category_name):
         cat_slug = Category.objects.get(name=category_name).id
     except Exception as e:
         return HttpResponse(str(e))
-    advet_content = Advertisement.objects.filter(active=True, is_category=True, subcateg=False)
     contents = Content.objects.filter(category__id=cat_slug, status=2).order_by('-published_date')[:100]
     paginator = Paginator(contents, 20)
     try:
@@ -73,9 +71,17 @@ def category_content(request, category_name):
         contents = paginator.page(paginator.num_pages)
     trending_contents = Content.objects.filter(category__id=cat_slug, trending=True, status=2).order_by('-published_date')[:30]
     not_miss_contents = Content.objects.filter(category__id=cat_slug, not_miss=True, status=2).order_by('-published_date')[:30]
+    try:
+        ad1url, ad1img = '', ''
+        ad1 = Advertisement.objects.filter(id=5, active=True, is_category=True, subcateg=False)
+        if ad1:
+            ad1url = ad1[0].link
+            ad1img = static_url + ad1[0].image.url
+    except:
+        pass
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                      "category_name": category_name, 'advet_content': advet_content})
+                                                      "category_name": category_name,"ad1url": ad1url, "ad1img": ad1img})
 
 def subcategory_content(request, subcategory_name):
     page = request.GET.get('page', 1)
@@ -96,9 +102,17 @@ def subcategory_content(request, subcategory_name):
         contents = paginator.page(paginator.num_pages)
     trending_contents = Content.objects.filter(subcategory__id=subcat_slug, trending=True, status=2).order_by('-published_date')[:30]
     not_miss_contents = Content.objects.filter(subcategory__id=subcat_slug, not_miss=True, status=2).order_by('-published_date')[:30]
+    try:
+        ad1url, ad1img = '', ''
+        ad1 = Advertisement.objects.filter(id=6, active=True, is_category=False, subcateg=True)
+        if ad1:
+            ad1url = ad1[0].link
+            ad1img = static_url + ad1[0].image.url
+    except:
+        pass
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                      "category_name": subcategory_name, 'advet_content': advet_content})
+                                                      "category_name": subcategory_name,"ad1url": ad1url, "ad1img": ad1img})
 
 def story(request, story_id):
     print story_id
@@ -134,10 +148,18 @@ def story(request, story_id):
         '-published_date')[:30]
     not_miss_contents = Content.objects.filter(category__id=cid, not_miss=True, status=2).order_by(
         '-published_date')[:30]
+    try:
+        ad1url, ad1img = '', ''
+        ad1 = Advertisement.objects.filter(id=7, active=True, story=True)
+        if ad1:
+            ad1url = ad1[0].link
+            ad1img = static_url + ad1[0].image.url
+    except:
+        pass
     return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
                                                    "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
                                                    'firstpara':firstpara, 'secondpara':secondpara, 'thirdpara':thirdpara,
-                                                   'advet_content': advet_content})
+                                                   "ad1url": ad1url, "ad1img": ad1img})
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})
@@ -163,7 +185,6 @@ def PhotoGallery(request):
 
 def top_picks(request):
     page = request.GET.get('page', 1)
-    advet_content = Advertisement.objects.all()
     contents = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:100]
     paginator = Paginator(contents, 20)
     try:
@@ -177,10 +198,18 @@ def top_picks(request):
     not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by(
         '-published_date')[:30]
     category_name = 'Top Picks'
+    try:
+        ad1url, ad1img = '', ''
+        ad1 = Advertisement.objects.filter(id=5, active=True, is_category=True, subcateg=False)
+        if ad1:
+            ad1url = ad1[0].link
+            ad1img = static_url + ad1[0].image.url
+    except:
+        pass
     return render(request, 'newsroom/category.html', {"static_url": static_url, "categ_contents": contents,
                                                       "trend_cont": trending_contents,
                                                       "not_miss_cont": not_miss_contents,
-                                                      "category_name": category_name})
+                                                      "category_name": category_name,"ad1url": ad1url, "ad1img": ad1img})
 
 def about_us(request):
     return render(request, 'newsroom/about-us.html', {})

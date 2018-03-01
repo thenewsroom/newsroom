@@ -578,6 +578,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
   .category-main-wrapper {
     max-width: 1280px;
     margin: 0 auto;
+    min-height: 100vh;
   }
   .category-articles-inner {
     padding: 12px 20px;
@@ -643,9 +644,25 @@ footer ul a, footer ul a:hover, footer ul a:focus {
     .pagination a.active {
         background-color: dodgerblue;
         color: white;
-
 }
+.ad-cont {
+      height: 150px;
+      width: 150px;
+    }
+  .ad-cont img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    }
 .pagination a:hover:not(.active) {background-color: #ddd;}
+div.pagination {
+  margin: 45px auto;
+    text-align: center;
+    width: 100%;
+}
+div.pagination a {
+  float: none;
+}
 </style>
 <body>
 <div class="newsroom-header">
@@ -702,6 +719,15 @@ footer ul a, footer ul a:hover, footer ul a:focus {
               </div>
           {%endfor%}
         </div>
+      </div>
+        <div class="col-md-3">
+            <div class="ad-cont">
+                <div>
+                    <a href="{{ad1url}}"  target="_blank">
+                        <img src="{{ad1img}}">
+                    </a>
+                </div>
+            </div>
       </div>
       <div class="col-md-3">
           <div class="category-left-title">
