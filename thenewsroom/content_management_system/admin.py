@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Content, ContentLoadStatus
+from .models import Content, ContentLoadStatus, Video
 from django import forms
 from .forms import ContentAdminForm
 from datetime import datetime
@@ -52,3 +52,19 @@ class ContentLoadStatusAdmin(admin.ModelAdmin):
     readonly_fields = ('comments','created_on',)
 admin.site.register(ContentLoadStatus, ContentLoadStatusAdmin)
 # Register your models here.
+
+
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'active', 'created_on',)
+    list_filter = ('created_on', 'active',)
+    fieldsets = ((None, {
+        'fields': (('name', 'active', 'image', 'link', 'created_on', 'created_by',))
+    }
+                  ),
+                 )
+    # list_editable = ('status',)
+    ist_per_page = 100
+
+    # inlines = [OrderedProductInline]
+    #readonly_fields = ('comments','created_on',)
+admin.site.register(Video, VideoAdmin)

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Content
+from .models import Content, Video
 from category.models import Category,SubCategory,Language
 from advertisements.models import Advertisement, Advertiserdetails
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -38,14 +38,22 @@ def home(request):
             ad3img = static_url + ad3[0].image.url
     except:
         pass
+    top_picksf, sports_contentsf, politics_contentsf, world_contentsf, india_contentsf = '','','','',''
+    if top_picks and sports_contents and politics_contents and world_contents and india_contents:
+        top_picksf = top_picks[0]
+        sports_contentsf = sports_contents[0]
+        politics_contentsf = politics_contents[0]
+        world_contentsf = world_contents[0]
+        india_contentsf = india_contents[0]
+
     try:
-        content_dict = {"static_url": static_url, "top_picks": top_picks[1:], "top_picks1": top_picks[0],
+        content_dict = {"static_url": static_url, "top_picks": top_picks[1:], "top_picks1": top_picksf,
                         "sports_contents": sports_contents[1:],
-                        "sp1": sports_contents[0],"odisha_contents": odisha_contents,
-                        "politics_contents": politics_contents[1:], "plc": politics_contents[0],"economy_contents": economy_contents,
+                        "sp1": sports_contentsf,"odisha_contents": odisha_contents,
+                        "politics_contents": politics_contents[1:], "plc": politics_contentsf,"economy_contents": economy_contents,
                         "entertain_contents": entertain_contents,
-                        "opinion_contents": opinion_contents, "indcon": india_contents[0], "india_contents": india_contents[1:],
-                        "wrldc": world_contents[0], "world_contents": world_contents[1:],
+                        "opinion_contents": opinion_contents, "indcon": india_contentsf, "india_contents": india_contents[1:],
+                        "wrldc": world_contentsf, "world_contents": world_contents[1:],
                         "photos_contents": photos_contents, "ad1url": ad1url, "ad1img": ad1img,"ad2url": ad2url,"ad2img": ad2img,
                         "ad3url": ad3url,"ad3img": ad3img}
         return render(request, 'newsroom/index.html', content_dict)
@@ -179,9 +187,10 @@ def PhotoGallery(request):
                         :30]
     not_miss_contents = Content.objects.filter(not_miss=True, status=2).order_by('-published_date')[
                         :30]
+    vdo_content = Video.objects.filter(active=True)[:10]
     return render(request, 'newsroom/photo.html',
                   {"static_url": static_url,"category_name": category_name, 'image_contents': images, "trend_cont": trending_contents,
-                   "not_miss_cont": not_miss_contents, 'img_actv': images[0]})
+                   "not_miss_cont": not_miss_contents, 'img_actv': images[0], 'vdo_content': vdo_content})
 
 def top_picks(request):
     page = request.GET.get('page', 1)

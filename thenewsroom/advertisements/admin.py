@@ -21,6 +21,9 @@ class AdvertisementAdmin(admin.ModelAdmin):
     #inlines = [OrderedProductInline]
     #readonly_fields = ('created_on',)
 
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     def get_actions(self, request):
         actions = super(AdvertisementAdmin, self).get_actions(request)
 
@@ -42,6 +45,10 @@ class AdvertiserdetailsAdmin(admin.ModelAdmin):
     # list_editable = ('status',)
     ist_per_page = 100
     readonly_fields = ('payment_due',)
+
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 # Register your models here.
 
 admin.site.register(Advertiserdetails, AdvertiserdetailsAdmin)

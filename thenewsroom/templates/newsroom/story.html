@@ -692,7 +692,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                   </a>
                 </div>
                 <div class="feed-article-lead">
-                    {{firstpara}}
+                    {{firstpara | safe }}
                 </div><br/>
                 <div class="feed-article-lead">
                     {% if content.story_image2 %}
@@ -700,7 +700,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                         <img src="{{content.story_image2}}" border="0" alt="Image"/>
                       </div>
                     {% endif%}
-                    {{secondpara}}
+                    {{secondpara | safe }}
                 </div><br/>
                 <div class="feed-article-lead">
                     {% if content.story_image3 %}
@@ -708,7 +708,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                           <img src="{{content.story_image3}}" border="0" alt="Image"/>
                         </div>
                     {% endif%}
-                    {{thirdpara}}
+                    {{thirdpara | safe }}
                     {% if content.story_image4 %}
                     <div class="feed_article_img_wrapper">
                       <img src="{{content.story_image4}}" border="0" alt="Image"/>

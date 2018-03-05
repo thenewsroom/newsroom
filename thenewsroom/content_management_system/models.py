@@ -38,6 +38,13 @@ def story_image(instance, filename):
         filename = str(fname) + '.' + ext
         return '/'.join([target_dir, filename])
 
+def video_image(instance, filename):
+    if filename:
+        target_dir = 'uploads/video_image/'
+        fname, ext = filename.rsplit('.', 1)
+        filename = str(fname) + '.' + ext
+        return '/'.join([target_dir, filename])
+
 # Create your models here.
 class Content(models.Model):
     title = models.CharField('Headline', max_length=400)
@@ -119,8 +126,11 @@ class Content(models.Model):
     def pub_date_strf(self):
         import datetime
         if self.published_date:
-            published_date = self.published_date.replace(tzinfo=None)
-            pub_date = datetime.datetime.strftime(published_date, "%d %B %Y")
+            try:
+                published_date = self.published_date.replace(tzinfo=None)
+                pub_date = datetime.datetime.strftime(published_date, "%d %B %Y")
+            except:
+                return self.published_date
             return pub_date
         else:
             return self.published_date
@@ -143,3 +153,21 @@ class ContentLoadStatus(models.Model):
 
     def __unicode__(self):
         return "%s" % (self.filename)
+
+class Video(models.Model):
+    name = models.CharField(max_length=255)
+    active = models.BooleanField(default=False)
+    link = models.URLField(max_length=800, blank=True, null=True, db_index=True
+                           )
+    image = models.ImageField(
+        upload_to=video_image,
+        max_length=254,
+        blank=True,
+        null=True,
+        default=''
+    )
+
+    created_on = models.DateTimeField('Created on', blank=True, null=True, db_index=True)
+    created_by = models.ForeignKey(User,
+                                   related_name='created_by_user', default=1
+                                   )

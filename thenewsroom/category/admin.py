@@ -27,6 +27,9 @@ class CategoryAdmin(admin.ModelAdmin):
             del actions['delete_selected']
         return actions
 
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     def save_model(self, request, obj, form, change):
         if 'name' in form.changed_data and obj.id:
             name = Category.objects.get(id=obj.id)
@@ -57,6 +60,10 @@ class SubCategoryAdmin(admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     def save_model(self, request, obj, form, change):
         if 'name' in form.changed_data and obj.id:
             name = SubCategory.objects.get(id=obj.id)
