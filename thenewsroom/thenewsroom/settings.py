@@ -130,6 +130,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': "400",
+    'width': "840",
+}
+TINYMCE_SPELLCHECKER = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
