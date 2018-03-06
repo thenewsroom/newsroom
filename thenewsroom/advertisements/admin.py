@@ -10,7 +10,7 @@ class AdvertisementAdmin(admin.ModelAdmin):
     list_filter = ('created_on', 'active')
     search_fields = ['name', ]
     fieldsets = ((None, {
-        'fields': (('name', 'comments', 'active',), ('link', 'image',), ('created_on', 'created_by'),('category', 'subcategory')
+        'fields': (('name', 'comments', 'active',), ('link', 'image',), ('created_on', 'created_by'),('is_category', 'subcateg', 'story',)
                    )
     }
                   ),
@@ -20,6 +20,16 @@ class AdvertisementAdmin(admin.ModelAdmin):
 
     #inlines = [OrderedProductInline]
     #readonly_fields = ('created_on',)
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def get_actions(self, request):
+        actions = super(AdvertisementAdmin, self).get_actions(request)
+
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
+        return actions
 admin.site.register(Advertisement, AdvertisementAdmin)
 
 class AdvertiserdetailsAdmin(admin.ModelAdmin):
@@ -35,6 +45,10 @@ class AdvertiserdetailsAdmin(admin.ModelAdmin):
     # list_editable = ('status',)
     ist_per_page = 100
     readonly_fields = ('payment_due',)
+
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 # Register your models here.
 
 admin.site.register(Advertiserdetails, AdvertiserdetailsAdmin)

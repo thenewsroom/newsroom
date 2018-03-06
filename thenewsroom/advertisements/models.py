@@ -31,9 +31,10 @@ class Advertisement(models.Model):
     created_by = models.ForeignKey(User,
             related_name='createdby_user', default=1
     )
-    category = models.ForeignKey(Category,blank=True, null=True,)
+    is_category = models.BooleanField(default=False)
 
-    subcategory = models.ForeignKey(SubCategory,blank=True, null=True,)
+    subcateg = models.BooleanField(default=False)
+    story = models.BooleanField(default=False)
 
     comments = models.CharField(max_length=4000, blank=True, null=True)
     active = models.BooleanField(default=True)

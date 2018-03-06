@@ -632,11 +632,23 @@ footer ul a, footer ul a:hover, footer ul a:focus {
     .feed_article_img_wrapper img {
         width: 100%;
     }
+    .ad-cont {
+      height: 150px;
+      width: 150px;
+    }
+  .ad-cont img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    }
 </style>
 
 <body>
 <div class="newsroom-header">
   <div><a href="#"><img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" height="30"></a></div>
+    <a class="active" href="/home/main">
+    Home
+    </a>
 </div>
     <div class="category-header">
       <h3>{{category_name}}</h3>
@@ -670,15 +682,51 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                 </div>
                   <div class="feed_article_img_wrapper">
                   <a href="#">
-                      <img src="{{static_url}}{{content.image.url}}" border="0" alt="Image"/>
+                      {% if content.image %}
+                            <img src="{{static_url}}{{content.image.url}}" border="0" alt="Image"/>
+                        {% elif content.story_image1 %}
+                            <img src="{{content.story_image1}}" border="0" alt="Image"/>
+                        {% else %}
+                            <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" alt="Image"/>
+                      {% endif%}
                   </a>
                 </div>
                 <div class="feed-article-lead">
-                    {{content.body_html}}
+                    {{firstpara | safe }}
+                </div><br/>
+                <div class="feed-article-lead">
+                    {% if content.story_image2 %}
+                      <div class="feed_article_img_wrapper">
+                        <img src="{{content.story_image2}}" border="0" alt="Image"/>
+                      </div>
+                    {% endif%}
+                    {{secondpara | safe }}
+                </div><br/>
+                <div class="feed-article-lead">
+                    {% if content.story_image3 %}
+                        <div class="feed_article_img_wrapper">
+                          <img src="{{content.story_image3}}" border="0" alt="Image"/>
+                        </div>
+                    {% endif%}
+                    {{thirdpara | safe }}
+                    {% if content.story_image4 %}
+                    <div class="feed_article_img_wrapper">
+                      <img src="{{content.story_image4}}" border="0" alt="Image"/>
+                    </div>
+                    {% endif%}
                 </div>
                 </div>
            </div>
         </div>
+      </div>
+        <div class="col-md-3">
+         <div class="ad-cont">
+                <div>
+                    <a href="{{ad1url}}"  target="_blank">
+                        <img src="{{ad1img}}">
+                    </a>
+                </div>
+            </div>
       </div>
       <div class="col-md-3">
           <div class="category-left-title">
@@ -702,7 +750,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
         <li><a href="/about_us" target="_blank">About us</a></li>
         <li><a href="/contact_us" target="_blank">Contact us</a></li>
         <li><a href="/disclaimer" target="_blank">Disclaimer</a></li>
-        <li><a href="/copyright" target="_blank">© 2018 Newsroom</a></li>
+        <li><a href="/copyright" target="_blank">© 2018 Thenewsroom</a></li>
     </ul>
 </footer>
 </body>

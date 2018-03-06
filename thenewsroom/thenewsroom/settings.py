@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0','13.127.33.48','13.127.186.217','localhost','thenewsroom.co.in','www.thenewsroom.co.in', 'preproduction.thenewsroom.co.in','*.thenewsroom.co.in']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': "400",
+    'width': "840",
+}
+TINYMCE_SPELLCHECKER = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
