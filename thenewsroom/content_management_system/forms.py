@@ -30,12 +30,14 @@ class ContentAdminForm(forms.ModelForm):
         body = cleaned_data.get('body_html')
         pubstatus = cleaned_data.get('status')
         story_status = cleaned_data.get('story_status')
+        comment = cleaned_data.get('comments')
+        if not comment:
+            self._errors['comments'] = ErrorList([mark_safe("Can not publish without lead.")])
         if pubstatus == 2 and story_status != 0:
             self._errors['story_status'] = ErrorList([mark_safe("Can not publish with this status.")])
         if pubstatus == 2 and not pub_date:
             self._errors['published_date'] = ErrorList([mark_safe("published date can not be null.")])
-        s = len(body.split('.'))
-        if s < 8 or len(body) < 300:
+        if len(body) < 300:
             self._errors['body_html'] = ErrorList([mark_safe("Word count minimum error")])
         if not slug:
             slug = slugify(title)
