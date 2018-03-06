@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+
+<title>Newsroom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.newsroom-header {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 auto;
+    text-align: center;
+    padding: 12px 20px;
+    background: #3F51B5;
+    color: #fff;
+  }
+  .newsroom-header a {
+    color: #fff;
+  }
+  .category-header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  .category-main-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .category-articles-inner {
+    padding: 12px 20px;
+  }
+  .feed-article {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  .date-byline {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .tag_items {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .tag_items li {
+    display: inline-block;
+    padding: 2px 12px;
+    font-size: 12px;
+    color: #888;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 4px;
+  }
+  .article-title a {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .category-left-article {
+    padding: 12px 20px;
+  }
+  .category-left-title {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ececec;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+    .feed_article_img_wrapper {
+        width: 187px;
+        float: left;
+        margin-right: 20px;
+    }
+    .feed_article_img_wrapper img {
+        width: 100%;
+    }
+  /*
+Author CK
+*/
+
+body { font-family: "Raleway", sans-serif }
+.logo-section {
+  padding: 12px 45px;
+}
+
+section.nav-items-wrapper>a {
+    padding: 15px 20px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.nav-items-wrapper .active,
+section.nav-items-wrapper>a:hover,
+section.nav-items-wrapper>a:focus {
+   background: #F44336
+}
+.nav-items-wrapper {
+  background: #3F51B5;
+  padding: 0 45px;
+}
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:9;
+}
+.content-wrapper {
+  background: #f6f6f6;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+}
+.content-inner {
+  width: 1265px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.row.row-gen {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row.row-gen>div {
+    padding-left: 0;
+}
+.news-top-items {
+    padding: 0;
+}
+
+.news-top-items li {
+  background: #fff;
+  list-style: none;
+  float: left;
+  width: 44%;
+  padding: 15px;
+}
+.news-top-items li h1 {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.news-top-items li:first-child {
+  width: 468px;
+  padding-top: 5px;
+  background: #fff;
+  margin-right: 39px;
+}
+.news-top-items li:first-child .img-thumb {
+  height: 290px;
+}
+.news-top-items li:first-child .img-thumb img {
+  height: 100%;
+}
+
+.news-top-items li:nth-child(2) {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.news-top-items li:nth-child(2) .img-thumb {
+  width: 215px;
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+  display: table-cell;
+  z-index: 1;
+  margin-right: 15px;
+}
+
+.news-top-items li:nth-child(2) h2 {
+  position: relative;
+  background: #fff;
+  padding: 0 10px 0 15px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  vertical-align: middle;
+  font-weight: 300;
+  border-radius: 3px;
+  min-height: 147px;
+  display: table-cell;
+}
+
+.news-top-items li:nth-child(3), .news-top-items li:nth-child(4), .news-top-items li:nth-child(5) {
+  width: 400px;
+  text-align: left;
+  float: left;
+  margin-bottom: 18px;
+  display: table;
+  background: transparent;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.news-top-items li:nth-child(3) .img-thumb,
+.news-top-items li:nth-child(4) .img-thumb,
+.news-top-items li:nth-child(5) .img-thumb
+{
+  width: 76px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.news-top-items li h2 {
+  font-size: 16px;
+  line-height: 22px;
+  color: #333;
+  margin-top: 5px;
+}
+.news-top-items li h2 a,
+.news-top-items li h2 a:hover
+.news-top-items li h2 a:focus
+{
+  color: #333;
+  text-decoration: none;
+}
+.news-top-items li img {
+  width: 100%;
+  border-radius: 3px;
+}
+.news-top-items li h3 {
+  display: table-cell;
+  padding-left: 16px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.news-top-items li h3 a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*
+  Navbar Dropdowns
+*/
+
+.nav-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  background: #F44336;
+  z-index: 9;
+  padding: 0;
+  width: 200px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.nav-dropdown li {
+  list-style: none;
+  padding: 10px 20px;
+}
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown{
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+/*================================
+ 4 col news style goes here
+==================================*/
+
+.section-header a {
+    display: inline-block;
+    background: #828282;
+    color: #fff;
+    width: auto;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-decoration: none;
+    border-left: 4px solid #F44336;
+}
+.news-ul {
+  padding: 0;
+  float: left;
+}
+.col-4-1 .news-ul,
+.col-4-3 .news-ul
+{
+  margin-top: 15px;
+}
+.col-4-2 .news-ul {
+  margin-top: 25px;
+}
+.col-4-2 .news-ul h4,
+.col-4-4 .news-ul h4 {
+  font-size: 17px;
+  line-height: 21px;
+  font-family: serif;
+}
+
+.news-ul li  {
+  list-style: none;
+  display: table;
+  width: 100%;
+  float: left;
+  padding: 15px 0 0 0;
+}
+.news-ul li h4 {
+  font-size: 16px;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  padding-right: 20px;
+  top: -7px;
+}
+.news-ul li h4 a {
+  color: #333;
+  text-decoration: none;
+}
+.news-ul li .col-img-thumb {
+  width: 60px!important;
+  height: 60px;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: top;
+  margin-bottom: 8px;
+  float: left;
+  position: relative;
+  padding-left: 0!important;
+}
+.col-img-detail img {
+  width: 100%;
+}
+.col-img-detail {
+  height: 140px;
+  overflow: hidden;
+  position: relative;
+}
+.col-4-1, .col-4-3 {
+  width: 290px;
+  float: left;
+  margin-right: 55px;
+}
+.col-4-detail {
+  width: 100%;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.col-4-detail:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 70%;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent 0, rgba(0,0,0,1) 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+.col-4-detail h3 {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 21px;
+  font-family: 'Arial', serif;
+  font-weight: 700;
+  padding: 0 15px 10px 15px;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+}
+.col-4-detail h3 a {
+  color: #fff;
+}
+
+.col-4-2, .col-4-4 {
+  width: 225px;
+  float: left;
+  margin-right: 60px;
+}
+/*===================================
+ Opinion section style goes here
+===================================*/
+.row-opinion {
+    float: left;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+.opinion-inner {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.opinion-inner ul {
+    padding: 0;
+}
+.opinion-inner ul li {
+    width: 30.5%;
+    height: 135px;
+    float: left;
+    margin: 0 20px 0 0;
+    padding: 15px 15px 0 15px;
+    background: #fff;
+    box-sizing: border-box;
+    display: table;
+    position: relative;
+    border-radius: 3px;
+}
+.opinion_description {
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 10px;
+}
+.opinion_description h6 {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #0d4d79;
+    margin-bottom: 10px;
+}
+
+.opinion_description h6 a
+{
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+}
+.opinion-img-thumb {
+    display: table-cell;
+    vertical-align: top;
+    width: 54px;
+}
+
+.opinion-img-thumb img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+.opinion-img-thumb div {
+    height: 54px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.nnl, .nnr {
+    float: left;
+}
+
+.nnl {
+    width: 300px;
+}
+
+/*=====================
+ Style for Photo gallery
+======================*/
+
+.newsroom-gallery-left-col {
+    width: 820px;
+}
+.gallery-inner {
+    width: 100%;
+    height: 511px;
+    float: left;
+}
+.newsroom-gallery-left-col .gallery-inner ul {
+    padding: 0;
+}
+.newsroom-gallery-left-col .gallery-inner ul li {
+    height: 511px;
+    width: 100%;
+    float: left;
+    position: relative;
+    list-style: none;
+}
+.newsroom-gallery-left-col .gallery-inner li .img-thumb {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.gallery-inner li .img-thumb img {
+    width: 100%;
+}
+
+.gallery-inner h3 {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    padding: 0 100px 0 97px;
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 7px rgba(0,0,0,1);
+}
+.gallery-inner h3 a {
+    color: #fff;
+}
+
+.newsroom-gallery-right-col {
+    width: 380px;
+    height: 511px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.newsroom-gallery-right-col ul {
+    padding-right: 40px;
+}
+.newsroom-gallery-right-col ul li {
+    margin-bottom: 20px;
+    width: 100%;
+    float: left;
+    list-style: none;
+    position: relative;
+}
+.newsroom-gallery-right-col .img-thumb {
+    height: 175px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.newsroom-gallery-right-col .img-thumb img {
+    width: 100%;
+}
+.newsroom-gallery-right-col li h6 {
+    box-sizing: border-box;
+    float: left;
+    padding: 10px 0 0 0;
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+}
+.newsroom-gallery-right-col li h6 a {
+    color: #333;
+}
+/*=========================
+ Footer style goes here
+=============================*/
+footer {
+    text-align: center;
+    background: #666;
+    color: #fff;
+}
+footer ul {
+  margin: 0;
+}
+footer ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px 15px;
+}
+footer ul a, footer ul a:hover, footer ul a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+/*============================
+ About us style goes here
+=============================*/
+.fpgs_inner {
+  max-width: 800px;
+  margin: 30px auto;
+  height: 100vh;
+}
+.fpgs_wrapper {
+  width: 100%;
+}
+.fpgs {
+  border-top: 3px solid #F44336;
+  padding-top: 25px;
+  margin-top: 20px;
+}
+.fpgs_inner h3 {
+  color: #000;
+}
+.contact_mail_wrapper {
+  text-align: center;
+  margin-top: 50px;
+}
+.contact_mail {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 10px;
+    width: 270px;
+    margin: 0 auto;
+}
+.contact_mail:hover {
+  border-top: 1px solid #f44336;
+  border-bottom: 1px solid #f44336;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.contact_mail a {
+  color: #000;
+  font-size: 18px;
+}
+.contact_mail:hover a {
+  color: #3F51B5;
+  text-decoration: none;
+}
+.contact_label {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.article-title.full-article-title a {
+  font-size: 20px;
+}
+.full-article .feed-article-lead {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 15px;
+}
+.ad-cont-1 {
+  position: absolute;
+  top: 66px;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  border: 1px solid #00aecd;
+  padding: 4px;
+}
+.ad-cont-1 img {
+height: 100%;
+width: 100%;
+}
+.close-ad {
+  color: #00aecd;
+  float: right;
+  background: #dadada;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+</style>
+
+<body>
+<div class="newsroom-header">
+  <div><a href="#"><img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" height="30"></a></div>
+</div>
+    <div class="category-header">
+      <h3>{{category_name}}</h3>
+    </div>
+  <div class="category-main-wrapper">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="category-left-title">
+          Trending
+        </div>
+        <div class="category-left-col">
+          {% for trarticle in trend_cont %}
+              <div class="category-left-article">
+                  <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/" target="_blank">{{trarticle.title}}</a></h5>
+                  <div class="feed-article-lead">
+                      {{trarticle.body_html|slice:":100"}}
+                  </div>
+              </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="category-articles-inner">
+          <h2>My Photos Section</h2>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              {% for vdo in vdo_content %}
+                <div style=" margin-top: 20px; ">
+                    <iframe width="100%" height="345" src="{{vdo.link}}">; </iframe>
+                </div>
+              {% endfor %}
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src='{{img_actv}}' alt="Image" style="width:100%;">
+              </div>
+                {% for img in image_contents %}
+                  <div class="item">
+                    <img src="{{img}}" alt="Image" style="width:100%;">
+                  </div>
+                {%endfor%}
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <div class="category-left-title">
+          Dont Miss
+        </div>
+        <div class="category-left-col">
+          {%for llarticle in not_miss_cont%}
+              <div class="category-left-article">
+                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/" target="_blank">{{llarticle.title}}</a></h5>
+                        <div class="feed-article-lead">
+                            {{llarticle.body_html|slice:":100"}}
+                        </div>
+              </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+<footer>
+    <ul>
+        <li><a href="/about_us" target="_blank">About us</a></li>
+        <li><a href="/contact_us" target="_blank">Contact us</a></li>
+        <li><a href="/disclaimer" target="_blank">Disclaimer</a></li>
+        <li><a href="/copyright" target="_blank">© 2018 Thenewsroom</a></li>
+    </ul>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    window.onscroll = function() {stickNav()};
+
+var navbar = document.getElementById("nav-items-wrapper");
+var sticky = navbar.offsetTop;
+
+function stickNav() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky-nav")
+  } else {
+    navbar.classList.remove("sticky-nav");
+  }
+}
+
+$(".close-ad").click(function() {
+  $(this).parents('div.ad-cont').hide();
+})
+</script>
+</body>
+</html>

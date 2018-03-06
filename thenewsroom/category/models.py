@@ -6,9 +6,9 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-
+# Create your models here.
 class Category(models.Model):
-    name = models.CharField('Headline', max_length=400)
+    name = models.CharField(max_length=400)
     slug = models.SlugField(
         max_length=400,
     )
@@ -40,7 +40,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     category = models.ForeignKey(Category)
-    name = models.CharField('Headline', max_length=400)
+    name = models.CharField(max_length=400)
     slug = models.SlugField(
         max_length=400,
         help_text='Automatically built from the title.'
@@ -74,7 +74,7 @@ class SubCategory(models.Model):
 class Language(models.Model):
     language = models.CharField(max_length=40)
     created_on = models.DateTimeField(
-        'Created on', auto_now_add=True, db_index=True
+        'Created on', db_index=True
     )
     created_by = models.ForeignKey(
         User,
@@ -86,4 +86,33 @@ class Language(models.Model):
     def __unicode__(self):
         return u'%s' % (self.language)
 
-# Create your models here.
+class TrendingCategory(models.Model):
+    name = models.CharField(max_length=400)
+    slug = models.SlugField(
+        max_length=400,
+    )
+    created_on = models.DateTimeField(
+        'Created on', db_index=True
+    )
+    created_by = models.ForeignKey(
+        User,
+        related_name='user_trend_categories', default=1
+    )
+    comments = models.CharField(max_length=4000, blank=True, null=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Trending Categories"
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
+    def save(self, *args, **kwargs):
+        """"
+        Custom
+        save
+        """
+        if not self.slug:
+            self.slug = self.name.lower().replace(' ', '-')
+
+        super(TrendingCategory, self).save(*args, **kwargs)

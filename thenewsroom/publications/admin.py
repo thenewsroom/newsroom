@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Publication
+from .models import Publication,RssFeed
 
 class PublicationAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug','active',)
@@ -18,4 +18,16 @@ class PublicationAdmin(admin.ModelAdmin):
                   ),
                  )
 admin.site.register(Publication, PublicationAdmin)
+
+class RssFeedAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category','active','url',)
+    search_fields = ['name',]
+    list_filter = ('active','category',)
+    fieldsets = ((None, {'fields': (('name', 'category',), ('url',),
+                                    ('created_on','comments','active',),
+                                    )
+                         }
+                  ),
+                 )
+admin.site.register(RssFeed, RssFeedAdmin)
 # Register your models here.

@@ -24,11 +24,25 @@ STORY_STATUS = (
     (3, 'Merged Words'),
 )
 
+FILE_LOAD_STATUS = (
+    ('f', 'Draft'),
+    ('S', 'Success'),
+    ('R', 'Reject'),
+    ('D', 'Duplicate'),
+)
+
 def story_image(instance, filename):
     if filename:
         target_dir = 'uploads/story_image/'
-        _, ext = filename.rsplit('.', 1)
-        filename = str(filename) + '.' + ext
+        fname, ext = filename.rsplit('.', 1)
+        filename = str(fname) + '.' + ext
+        return '/'.join([target_dir, filename])
+
+def video_image(instance, filename):
+    if filename:
+        target_dir = 'uploads/video_image/'
+        fname, ext = filename.rsplit('.', 1)
+        filename = str(fname) + '.' + ext
         return '/'.join([target_dir, filename])
 
 # Create your models here.
@@ -49,11 +63,23 @@ class Content(models.Model):
         max_length=254,
         blank=True,
         null=True,
-        default=''
+        default='https://thenewsroom.co.in/media/uploads/story_image/newsroom-logo-5.png'
+    )
+    story_image1 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image2 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image3 = models.URLField(
+        max_length=800, blank=True, db_index=True
+    )
+    story_image4 = models.URLField(
+        max_length=800, blank=True, db_index=True
     )
     status = models.IntegerField(choices=PUB_STATUS, default=0)
     body_html = models.TextField(blank=True)
-    published_date = models.DateTimeField('Date published', db_index=True)
+    published_date = models.DateTimeField('Date published', blank=True, null=True ,db_index=True)
 
     publication = models.ForeignKey(
         Publication, limit_choices_to={'active': True}
@@ -62,6 +88,9 @@ class Content(models.Model):
         max_length=255, blank=True,
         help_text="Leave it blank for it to be populated by the system."
     )
+    top_pick = models.BooleanField(default=False)
+    trending = models.BooleanField(default=False)
+    not_miss = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now_add=True)
     created_on = models.DateTimeField(
         'Created on', auto_now_add=True, db_index=True
@@ -86,10 +115,59 @@ class Content(models.Model):
         User, limit_choices_to={'is_staff': True, 'is_active': True},
         related_name='approved_contents', blank=True, null=True
     )
-    comments = models.TextField(blank=True, null=True)
+    comments = models.CharField(max_length=400,blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % (self.title)
 
     class Meta:
         ordering = ('-published_date',)
+
+    def pub_date_strf(self):
+        import datetime
+        if self.published_date:
+            try:
+                published_date = self.published_date.replace(tzinfo=None)
+                pub_date = datetime.datetime.strftime(published_date, "%d %B %Y")
+            except:
+                return self.published_date
+            return pub_date
+        else:
+            return self.published_date
+
+    def save(self, *args, **kwargs):
+        """"
+        Custom
+        save
+        """
+        if not self.slug:
+            self.slug = self.title.lower().replace(' ', '-')
+
+        super(Content, self).save(*args, **kwargs)
+
+class ContentLoadStatus(models.Model):
+    filename = models.CharField(max_length=255)
+    status = models.CharField(max_length=1, choices=FILE_LOAD_STATUS, default='f')
+    comments = models.TextField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return "%s" % (self.filename)
+
+class Video(models.Model):
+    name = models.CharField(max_length=255)
+    active = models.BooleanField(default=False)
+    link = models.URLField(max_length=800, blank=True, null=True, db_index=True
+                           )
+    image = models.ImageField(
+        upload_to=video_image,
+        max_length=254,
+        blank=True,
+        null=True,
+        default=''
+    )
+
+    created_on = models.DateTimeField('Created on', blank=True, null=True, db_index=True)
+    created_by = models.ForeignKey(User,
+                                   related_name='created_by_user', default=1
+                                   )

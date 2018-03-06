@@ -12,6 +12,7 @@ requests
 BeautifulSoup==3.2.1
 feedparser==5.2.1
 mechanize==0.2.5
+django-tinymce
 #Ipython==4.0
 #CREATE ROLE rajtilak WITH LOGIN;create database newsroom_db;ALTER ROLE rajtilak SUPERUSER;ALTER USER rajtilak with password 'password';
 #./manage.py shell -c "from django.db import connection; print(connection.cursor().connection.server_version)"
