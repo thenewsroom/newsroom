@@ -20,7 +20,7 @@ from content_management_system import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.commingsoon, name='commingsoon'),
+    url(r'^$', views.home,name='home'),
     url(r'^home/', include('content_management_system.urls'),),
     url(r'^category/', include('content_management_system.urls'),),
     url(r'^content/', include('content_management_system.urls'), ),
