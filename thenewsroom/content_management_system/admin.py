@@ -6,6 +6,7 @@ from .models import Content, ContentLoadStatus, Video
 from django import forms
 from .forms import ContentAdminForm
 from datetime import datetime
+from tinymce.widgets import AdminTinyMCE
 
 class ContentAdmin(admin.ModelAdmin):
     form = ContentAdminForm
@@ -26,6 +27,12 @@ class ContentAdmin(admin.ModelAdmin):
 
     #inlines = [OrderedProductInline]
     readonly_fields = ('updated_on', 'created_on',)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        # use TinyMCE widget for body_html
+        if db_field.name == 'body_html':
+            kwargs['widget'] = AdminTinyMCE
+        return super(ContentAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
     def save_model(self, request, obj, form, change):
         if obj.status in [2,-1]:

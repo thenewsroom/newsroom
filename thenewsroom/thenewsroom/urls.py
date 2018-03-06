@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^contact_us$', views.contact_us, name='contact_us'),
     url(r'^copyright$', views.copright, name='copright'),
     url(r'^disclaimer$', views.disclaimer, name='disclaimer'),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
