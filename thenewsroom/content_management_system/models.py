@@ -115,7 +115,7 @@ class Content(models.Model):
         User, limit_choices_to={'is_staff': True, 'is_active': True},
         related_name='approved_contents', blank=True, null=True
     )
-    comments = models.CharField(max_length=400,blank=True, null=True)
+    comments = models.CharField('Article lead',max_length=400,blank=True, null=True)
 
     def __unicode__(self):
         return u'%s' % (self.title)

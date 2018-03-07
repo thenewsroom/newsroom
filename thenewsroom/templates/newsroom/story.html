@@ -664,7 +664,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
               <div class="category-left-article">
                         <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/" target="_blank">{{trarticle.title}}</a></h5>
                         <div class="feed-article-lead">
-                            {{trarticle.body_html|slice:":100"}}
+                            {{trarticle.comments|slice:":80"}}
                         </div>
               </div>
           {% endfor %}
@@ -680,40 +680,19 @@ footer ul a, footer ul a:hover, footer ul a:focus {
                 <div class="date-byline">
                   <span>{{content.author}} </span>&middot; <span>{{content.pub_date_strf}}</span>
                 </div>
-                  <div class="feed_article_img_wrapper">
-                  <a href="#">
-                      {% if content.image %}
-                            <img src="{{static_url}}{{content.image.url}}" border="0" alt="Image"/>
-                        {% elif content.story_image1 %}
-                            <img src="{{content.story_image1}}" border="0" alt="Image"/>
-                        {% else %}
-                            <img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" alt="Image"/>
-                      {% endif%}
-                  </a>
-                </div>
+                  <!--<div class="feed_article_img_wrapper">-->
+                  <!--<a href="#">-->
+                      <!--{% if content.image %}-->
+                            <!--<img src="{{static_url}}{{content.image.url}}" border="0" alt="Image"/>-->
+                        <!--{% elif content.story_image1 %}-->
+                            <!--<img src="{{content.story_image1}}" border="0" alt="Image"/>-->
+                        <!--{% else %}-->
+                            <!--<img src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0" alt="Image"/>-->
+                      <!--{% endif%}-->
+                  <!--</a>-->
+                <!--</div>-->
                 <div class="feed-article-lead">
-                    {{firstpara | safe }}
-                </div><br/>
-                <div class="feed-article-lead">
-                    {% if content.story_image2 %}
-                      <div class="feed_article_img_wrapper">
-                        <img src="{{content.story_image2}}" border="0" alt="Image"/>
-                      </div>
-                    {% endif%}
-                    {{secondpara | safe }}
-                </div><br/>
-                <div class="feed-article-lead">
-                    {% if content.story_image3 %}
-                        <div class="feed_article_img_wrapper">
-                          <img src="{{content.story_image3}}" border="0" alt="Image"/>
-                        </div>
-                    {% endif%}
-                    {{thirdpara | safe }}
-                    {% if content.story_image4 %}
-                    <div class="feed_article_img_wrapper">
-                      <img src="{{content.story_image4}}" border="0" alt="Image"/>
-                    </div>
-                    {% endif%}
+                    {{body | safe }}
                 </div>
                 </div>
            </div>
@@ -737,7 +716,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
               <div class="category-left-article">
                         <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/" target="_blank">{{llarticle.title}}</a></h5>
                         <div class="feed-article-lead">
-                            {{llarticle.body_html|slice:":100"}}
+                            {{llarticle.comments|slice:":80"}}
                         </div>
               </div>
           {%endfor%}

@@ -12,7 +12,7 @@ static_url = "https://thenewsroom.co.in"
 # Create your views here.
 
 def home(request):
-    top_picks = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:5]
+    top_picks = Content.objects.filter(top_pick=True, status=2).order_by('published_date')[:5]
     sports_contents = Content.objects.filter(category__id=5, status=2).order_by('-published_date')[:5]
     odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('-published_date')[:5]
     politics_contents = Content.objects.filter(category__id=3, status=2).order_by('-published_date')[:5]
@@ -39,11 +39,15 @@ def home(request):
     except:
         pass
     top_picksf, sports_contentsf, politics_contentsf, world_contentsf, india_contentsf = '','','','',''
-    if top_picks and sports_contents and politics_contents and world_contents and india_contents:
+    if top_picks:
         top_picksf = top_picks[0]
+    if  sports_contents:
         sports_contentsf = sports_contents[0]
+    if politics_contents:
         politics_contentsf = politics_contents[0]
+    if world_contents:
         world_contentsf = world_contents[0]
+    if india_contents:
         india_contentsf = india_contents[0]
 
     try:
@@ -65,6 +69,7 @@ def category_content(request, category_name):
     if category_name == 'photogallery':
         category_name = 'Photo/Video Gallery'
     try:
+        print category_name
         category_name = category_name.title()
         cat_slug = Category.objects.get(name=category_name).id
     except Exception as e:
@@ -123,34 +128,11 @@ def subcategory_content(request, subcategory_name):
                                                       "category_name": subcategory_name,"ad1url": ad1url, "ad1img": ad1img})
 
 def story(request, story_id):
-    print story_id
-    firstpara = ""
-    secondpara = ""
-    thirdpara = ""
     c = Content.objects.get(id=int(story_id))
     advet_content = Advertisement.objects.filter(active=True, story=True)
     category_name = c.category.name
     cid = c.category.id
-    try:
-        body = c.body_html
-        splitcont = body.split('.')
-        if not len(splitcont) % 3 == 0:
-            for i in range(10):
-                count = len(splitcont) + 1
-                if count % 3 == 0:
-                    break
-        else:
-            count = len(splitcont)
-        fcont = count / 3
-        scount = fcont * 2
-
-        firstpara = '.'.join(splitcont[:fcont])
-        secondpara = '.'.join(splitcont[fcont:scount])
-        thirdpara = '.'.join(splitcont[scount:])
-    except:
-        firstpara = body[:100]
-        secondpara = body[100:300]
-        thirdpara = body[300:]
+    body = c.body_html
 
     trending_contents = Content.objects.filter(category__id=cid, trending=True, status=2).order_by(
         '-published_date')[:30]
@@ -166,8 +148,7 @@ def story(request, story_id):
         pass
     return render(request, 'newsroom/story.html', {"category_name": category_name, "static_url": static_url, "content":c,
                                                    "trend_cont": trending_contents, "not_miss_cont": not_miss_contents,
-                                                   'firstpara':firstpara, 'secondpara':secondpara, 'thirdpara':thirdpara,
-                                                   "ad1url": ad1url, "ad1img": ad1img})
+                                                   'body':body, "ad1url": ad1url, "ad1img": ad1img})
 
 def commingsoon(request):
     return render(request, 'home/home.html', {})
