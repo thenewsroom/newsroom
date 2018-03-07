@@ -39,11 +39,15 @@ def home(request):
     except:
         pass
     top_picksf, sports_contentsf, politics_contentsf, world_contentsf, india_contentsf = '','','','',''
-    if top_picks and sports_contents and politics_contents and world_contents and india_contents:
+    if top_picks:
         top_picksf = top_picks[0]
+    if  sports_contents:
         sports_contentsf = sports_contents[0]
+    if politics_contents:
         politics_contentsf = politics_contents[0]
+    if world_contents:
         world_contentsf = world_contents[0]
+    if india_contents:
         india_contentsf = india_contents[0]
 
     try:
