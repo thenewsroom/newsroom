@@ -679,7 +679,7 @@ width: 100%;
               <div class="category-left-article">
                   <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/" target="_blank">{{trarticle.title}}</a></h5>
                   <div class="feed-article-lead">
-                      {{trarticle.body_html|slice:":100"}}
+                      {{trarticle.comments|slice:":80"}}
                   </div>
               </div>
           {% endfor %}
@@ -734,7 +734,7 @@ width: 100%;
               <div class="category-left-article">
                         <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/" target="_blank">{{llarticle.title}}</a></h5>
                         <div class="feed-article-lead">
-                            {{llarticle.body_html|slice:":100"}}
+                            {{llarticle.comments|slice:":80"}}
                         </div>
               </div>
           {%endfor%}
