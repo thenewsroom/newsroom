@@ -7,12 +7,12 @@ from .models import Content, Video
 from category.models import Category,SubCategory,Language
 from advertisements.models import Advertisement, Advertiserdetails
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-#static_url = "https://thenewsroom.co.in"
-static_url = "http://preproduction.thenewsroom.co.in"
+static_url = "https://thenewsroom.co.in"
+#static_url = "http://preproduction.thenewsroom.co.in"
 # Create your views here.
 
 def home(request):
-    top_picks = Content.objects.filter(top_pick=True, status=2).order_by('published_date')[:5]
+    top_picks = Content.objects.filter(top_pick=True, status=2).order_by('-published_date')[:5]
     sports_contents = Content.objects.filter(category__id=5, status=2).order_by('-published_date')[:5]
     odisha_contents = Content.objects.filter(category__id=2, status=2).order_by('-published_date')[:5]
     politics_contents = Content.objects.filter(category__id=3, status=2).order_by('-published_date')[:5]
