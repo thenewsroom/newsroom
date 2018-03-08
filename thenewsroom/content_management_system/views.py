@@ -7,7 +7,7 @@ from .models import Content, Video
 from category.models import Category,SubCategory,Language
 from advertisements.models import Advertisement, Advertiserdetails
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-static_url = "https://thenewsroom.co.in"
+static_url = "http://thenewsroom.co.in"
 #static_url = "http://preproduction.thenewsroom.co.in"
 # Create your views here.
 
