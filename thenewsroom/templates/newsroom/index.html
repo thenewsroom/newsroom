@@ -662,7 +662,7 @@ position: absolute;;
                       <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% elif tpstory.story_image1 %}
@@ -671,7 +671,7 @@ position: absolute;;
                       <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{tpstory.story_image1}}" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% else %}
@@ -680,7 +680,7 @@ position: absolute;;
                       <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title|slice:":30"}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% endif%}
@@ -708,7 +708,7 @@ position: absolute;;
               <div class="col-4-detail">
                   <h3>
                         <a href="/content/view/{{plc.id}}/" target="_blank" class="news-item-title">
-                            {{plc.title|slice:":30"}}
+                            {{plc.title}}
                         </a>
                   </h3>
                   <div class="col-img-detail">
@@ -728,7 +728,7 @@ position: absolute;;
                   <li>
                       <h4>
                             <a href="/content/view/{{pstory.id}}/" target="_blank" class="news-item-title">
-                                {{pstory.title|slice:":30"}}
+                                {{pstory.title}}
                             </a>
                       </h4>
                       <div class="col-img-thumb">
@@ -757,7 +757,7 @@ position: absolute;;
                         <li>
                                 <h4>
                                       <a href="/content/view/{{ecstory.id}}/" target="_blank" class="news-item-title">
-                                          {{ecstory.title|slice:":30"}}
+                                          {{ecstory.title}}
                                       </a>
                                 </h4>
                                 <div class="col-img-thumb">
@@ -784,7 +784,7 @@ position: absolute;;
                 <div class="col-4-detail">
                     <h3>
                           <a href="/content/view/{{sp1.id}}/" target="_blank" class="news-item-title">
-                              {{sp1.title|slice:":30"}}
+                              {{sp1.title}}
                           </a>
                     </h3>
                     <div class="col-img-detail">
@@ -804,7 +804,7 @@ position: absolute;;
                     <li>
                         <h4>
                               <a href="/content/view/{{spostory.id}}/" target="_blank" class="news-item-title">
-                                  {{spostory.title|slice:":30"}}
+                                  {{spostory.title}}
                               </a>
                         </h4>
                         <div class="col-img-thumb">
@@ -833,7 +833,7 @@ position: absolute;;
                               <li>
                                   <h4>
                                         <a href="/content/view/{{entstory.id}}/" target="_blank" class="news-item-title">
-                                            {{entstory.title|slice:":30"}}
+                                            {{entstory.title}}
                                         </a>
                                   </h4>
                                   <div class="col-img-thumb">
@@ -864,7 +864,7 @@ position: absolute;;
                   <li>
                     <div class="opinion_description">
                         <h6>
-                            <a href="/content/view/{{opnstory.id}}/" target="_blank">{{opnstory.title|slice:":30"}}</a>
+                            <a href="/content/view/{{opnstory.id}}/" target="_blank">{{opnstory.title}}</a>
                         </h6>
                     </div>
                     <div class="opinion-img-thumb">
@@ -894,7 +894,7 @@ position: absolute;;
             </h2>
           <ul class="news-top-items">
             <li>
-                <h1>{{indcon.title|slice:":30"}}</h1>
+                <h1>{{indcon.title}}</h1>
                 <div class="img-thumb">
                     <a href="/content/view/{{indcon.id}}/" target="_blank">
                         {% if indcon.image %}
@@ -920,7 +920,7 @@ position: absolute;;
                         {% endif%}
                     </a>
                 </div>
-                <h2><a href="/content/view/{{indstory.id}}/" target="_blank" class="item-title">{{indstory.title|slice:":30"}}</a></h2>
+                <h2><a href="/content/view/{{indstory.id}}/" target="_blank" class="item-title">{{indstory.title}}</a></h2>
               </li>
             {% endfor %}
           </ul>
@@ -945,7 +945,7 @@ position: absolute;;
             </h2>
           <ul class="news-top-items">
             <li>
-                <h1>{{wrldc.title|slice:":30"}}</h1>
+                <h1>{{wrldc.title}}</h1>
                 <div class="img-thumb">
                     <a href="/content/view/{{wrldc.id}}/" target="_blank">
                         {% if wrldc.image %}
@@ -971,7 +971,7 @@ position: absolute;;
                       {% endif%}
                   </a>
                 </div>
-                <h2><a href="/content/view/{{wrlstory.id}}/" target="_blank" class="item-title">{{wrlstory.title|slice:":30"}}</a></h2>
+                <h2><a href="/content/view/{{wrlstory.id}}/" target="_blank" class="item-title">{{wrlstory.title}}</a></h2>
               </li>
             {% endfor %}
           </ul>
