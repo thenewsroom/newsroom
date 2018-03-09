@@ -585,7 +585,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
   }
   .feed-article {
     border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+    padding-bottom: 10px; overflow: hidden;
   }
   .date-byline {
     color: #888;
@@ -627,8 +627,10 @@ footer ul a, footer ul a:hover, footer ul a:focus {
   }
     .feed_article_img_wrapper {
         width: 187px;
-        float: left;
-        margin-right: 20px;
+float: left;
+margin-right: 20px;
+ min-height: 70px;
+ margin-top: 20px;
     }
     .feed_article_img_wrapper img {
         width: 100%;
@@ -645,14 +647,20 @@ footer ul a, footer ul a:hover, footer ul a:focus {
         background-color: dodgerblue;
         color: white;
 }
+@media(max-width: 480px) {
+.category-main-wrapper .col-md-3:first-child {
+display: none
+}
+}
 .ad-cont {
-      height: 150px;
-      width: 150px;
+     height: 250px;
+width: 150px;
+ margin-top: 25px;
     }
   .ad-cont img {
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    height: auto;
+width: 100%;
+position: absolute;
     }
 .pagination a:hover:not(.active) {background-color: #ddd;}
 div.pagination {
@@ -678,6 +686,13 @@ div.pagination a {
   <div class="category-main-wrapper">
     <div class="row">
       <div class="col-md-3">
+          <div class="ad-cont">
+                <div>
+                    <a href="{{ad1url}}"  target="_blank">
+                        <img src="{{ad1img}}">
+                    </a>
+                </div>
+            </div>
         <div class="category-left-title">
           Trending
         </div>
@@ -723,8 +738,8 @@ div.pagination a {
         <div class="col-md-3">
             <div class="ad-cont">
                 <div>
-                    <a href="{{ad1url}}"  target="_blank">
-                        <img src="{{ad1img}}">
+                    <a href="{{ad2url}}"  target="_blank">
+                        <img src="{{ad2img}}">
                     </a>
                 </div>
             </div>
