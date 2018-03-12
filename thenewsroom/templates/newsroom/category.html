@@ -709,7 +709,7 @@ div.pagination a {
         <div class="category-left-col">
             {% for trarticle in trend_cont %}
               <div class="category-left-article">
-                        <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/" target="_blank">{{trarticle.title}}</a></h5>
+                        <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/">{{trarticle.title}}</a></h5>
                         <div class="feed-article-lead">
                             {{trarticle.comments}}
                         </div>
@@ -733,7 +733,7 @@ div.pagination a {
                       </a>
                   </div>
                     <div>
-                        <h3 class="article-title"><a href="/content/view/{{article.id}}/" target="_blank">{{article.title}}</a></h3>
+                        <h3 class="article-title"><a href="/content/view/{{article.id}}/">{{article.title}}</a></h3>
                     <div class="date-byline">
                       <span>{{article.author}}</span>&middot; <span>{{article.pub_date_strf}}</span>
                     </div>
@@ -761,7 +761,7 @@ div.pagination a {
         <div class="category-left-col">
           {%for llarticle in not_miss_cont%}
               <div class="category-left-article">
-                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/" target="_blank">{{llarticle.title}}</a></h5>
+                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/">{{llarticle.title}}</a></h5>
                         <div class="feed-article-lead">
                             {{llarticle.comments}}
                         </div>
@@ -772,11 +772,11 @@ div.pagination a {
     </div>
     <div class="pagination">
       <a href="#">&laquo;</a>
-      <a class="active" href="?page=1" target="_blank">1</a>
-      <a href="?page=2" target="_blank">2</a>
-      <a href="?page=3" target="_blank">3</a>
-      <a href="?page=4" target="_blank">4</a>
-      <a href="?page=5" target="_blank">5</a>
+      <a class="active" href="?page=1">1</a>
+      <a href="?page=2">2</a>
+      <a href="?page=3">3</a>
+      <a href="?page=4">4</a>
+      <a href="?page=5">5</a>
       <a href="#">&raquo;</a>
     </div>
   </div>
