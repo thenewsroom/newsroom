@@ -582,6 +582,7 @@ footer ul a, footer ul a:hover, footer ul a:focus {
   }
   .category-articles-inner {
     padding: 12px 20px;
+    min-height: 100vh;
   }
   .feed-article {
     border-bottom: 1px solid #ccc;
@@ -653,15 +654,24 @@ display: none
 }
 }
 .ad-cont {
-     height: 250px;
-width: 150px;
- margin-top: 25px;
+    height: 250px;
+    width: 300px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
     }
   .ad-cont img {
     height: auto;
-width: 100%;
-position: absolute;
+    width: 100%;
     }
+  .ad-cont-1 {
+    position: absolute;
+    top: 66px;
+    right: 0;
+    height: 280px;
+    width: 330px;
+    padding: 4px;
+}
 .pagination a:hover:not(.active) {background-color: #ddd;}
 div.pagination {
   margin: 45px auto;
