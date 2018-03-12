@@ -135,6 +135,14 @@ USE_TZ = True
 TINYMCE_DEFAULT_CONFIG = {
     'height': "400",
     'width': "840",
+    'theme': "advanced", # default value
+    'theme_advanced_buttons1': "styleselect,fontselect,fontsizeselect,sync,spellchecker,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,separator,undo,redo,separator,link,unlink,image,code,tablecontrols",
+    'theme_advanced_buttons2': "", "theme_advanced_buttons3": "",
+    'theme_advanced_toolbar_location': "top",
+    'theme_advanced_toolbar_align': "left",
+    'theme_advanced_statusbar_location': "bottom",
+    'relative_urls': False,
+    'theme_advanced_path': True,
 }
 TINYMCE_SPELLCHECKER = True
 
