@@ -606,28 +606,28 @@ position: absolute;;
     <a class="active" href="#">
     Home
     </a>
-    <span class="nav-dropdown-wrapper"><a href="/category/c/odisha/" target="_blank">Odisha</a>
-        <ul class="nav-dropdown">
-            <li><a href="/category/subcategory/sambalpur/" target="_blank">Sambalpur</a></li>
-            <li><a href="/category/subcategory/berhampur/" target="_blank">Berhampur</a></li>
-            <li><a href="/category/subcategory/cuttack/" target="_blank">Cuttack</a></li>
-            <li><a href="/category/subcategory/bhubaneswar/" target="_blank">Bhubaneswar</a></li>
-        </ul>
+    <span class="nav-dropdown-wrapper"><a href="/category/c/odisha/">Odisha</a>
+        <!--<ul class="nav-dropdown">-->
+            <!--<li><a href="/category/subcategory/sambalpur/" target="_blank">Sambalpur</a></li>-->
+            <!--<li><a href="/category/subcategory/berhampur/" target="_blank">Berhampur</a></li>-->
+            <!--<li><a href="/category/subcategory/cuttack/" target="_blank">Cuttack</a></li>-->
+            <!--<li><a href="/category/subcategory/bhubaneswar/" target="_blank">Bhubaneswar</a></li>-->
+        <!--</ul>-->
     </span>
-    <a href="/category/c/politics/" target="_blank">Politics</a>
-    <a href="/category/c/economy/" target="_blank">Economy</a>
-    <a href="/category/c/sports/" target="_blank">Sports</a>
-    <span class="nav-dropdown-wrapper"><a href="/category/c/entertainment/" target="_blank">Entertainment</a>
+    <a href="/category/c/politics/">Politics</a>
+    <a href="/category/c/economy/">Economy</a>
+    <a href="/category/c/sports/">Sports</a>
+    <span class="nav-dropdown-wrapper"><a href="/category/c/entertainment/">Entertainment</a>
      <ul class="nav-dropdown">
-         <li><a href="/category/subcategory/Hollywood/" target="_blank">Hollywood</a></li>
-         <li><a href="/category/subcategory/bollywood/" target="_blank">Bollywood</a></li>
-         <li><a href="/category/subcategory/ollywood/" target="_blank">Ollywood</a></li>
+         <li><a href="/category/subcategory/Hollywood/">Hollywood</a></li>
+         <li><a href="/category/subcategory/bollywood/">Bollywood</a></li>
+         <li><a href="/category/subcategory/ollywood/">Ollywood</a></li>
         </ul>
     </span>
-    <a href="/category/c/opinion/" target="_blank">Opinion</a>
-    <a href="/category/c/india/" target="_blank">India</a>
-    <a href="/category/c/world/" target="_blank">World</a>
-    <a href="/category/p/photogallery/" target="_blank">Photo/Video Gallery</a>
+    <a href="/category/c/opinion/">Opinion</a>
+    <a href="/category/c/india/">India</a>
+    <a href="/category/c/world/">World</a>
+    <a href="/category/p/photogallery/">Photo/Video Gallery</a>
 </section>
 
 <section class="content-wrapper">
@@ -641,9 +641,9 @@ position: absolute;;
               </h2>
           <ul class="news-top-items">
             <li>
-                <a href="/content/view/{{top_picks1.id}}/" target="_blank"><h1>{{top_picks1.title}}</h1></a>
+                <a href="/content/view/{{top_picks1.id}}/"><h1>{{top_picks1.title}}</h1></a>
                 <div class="img-thumb">
-                    <a href="/content/view/{{top_picks1.id}}/" target="_blank">
+                    <a href="/content/view/{{top_picks1.id}}/">
                         {% if top_picks1.image %}
                             <img src="{{static_url}}{{top_picks1.image.url}}"/>
                         {% elif top_picks1.story_image1 %}
@@ -658,28 +658,28 @@ position: absolute;;
               {% if tpstory.image %}
                 <li>
                   <div class="img-thumb">
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
+                      <a href="/content/view/{{tpstory.id}}/"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{tpstory.image.url}}" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" class="item-title">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% elif tpstory.story_image1 %}
                 <li>
                   <div class="img-thumb">
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{tpstory.story_image1}}" border="0"/></a>
+                      <a href="/content/view/{{tpstory.id}}/"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{tpstory.story_image1}}" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" class="item-title">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% else %}
                 <li>
                   <div class="img-thumb">
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0"/></a>
+                      <a href="/content/view/{{tpstory.id}}/"><img alt='{{tpstory.title|slice:":30"}}' title='{{tpstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}/media/uploads/story_image/newsroom-logo-5.png" border="0"/></a>
                   </div>
                   <h3>
-                      <a href="/content/view/{{tpstory.id}}/" target="_blank" class="item-title" target="_blank">{{tpstory.title}}</a>
+                      <a href="/content/view/{{tpstory.id}}/" class="item-title">{{tpstory.title}}</a>
                   </h3>
                 </li>
               {% endif%}
@@ -689,7 +689,7 @@ position: absolute;;
         <div class="col-xs-3">
             <div class="ad-cont ad-cont-1">
                 <div>
-                    <a href='{{ad3url}}' target="_blank">
+                    <a href='{{ad3url}}'>
                         <img src='{{ad3img}}' >
                     </a>
                 </div>
@@ -699,18 +699,18 @@ position: absolute;;
       <div class="row-col-4">
           <div class="col-4-1">
               <h2 class="section-header">
-                  <a href="/category/c/politics/" target="_blank">
+                  <a href="/category/c/politics/">
                       <span>Politics</span>
                   </a>
               </h2>
               <div class="col-4-detail">
                   <h3>
-                        <a href="/content/view/{{plc.id}}/" target="_blank" class="news-item-title">
+                        <a href="/content/view/{{plc.id}}/" class="news-item-title">
                             {{plc.title}}
                         </a>
                   </h3>
                   <div class="col-img-detail">
-                      <a href="/content/view/{{plc.id}}/" target="_blank">
+                      <a href="/content/view/{{plc.id}}/">
                           {% if plc.image %}
                               <img class="imgbrd lazy" src="{{static_url}}{{plc.image.url}}" border="0" style="display: block;"/>
                           {% elif plc.story_image1 %}
@@ -725,12 +725,12 @@ position: absolute;;
                 {% for pstory in politics_contents %}
                   <li>
                       <h4>
-                            <a href="/content/view/{{pstory.id}}/" target="_blank" class="news-item-title">
+                            <a href="/content/view/{{pstory.id}}/" class="news-item-title">
                                 {{pstory.title}}
                             </a>
                       </h4>
                       <div class="col-img-thumb">
-                          <a href="/content/view/{{pstory.id}}/" target="_blank">
+                          <a href="/content/view/{{pstory.id}}/">
                                 {% if pstory.image %}
                                   <img class="imgbrd lazy" src="{{static_url}}{{pstory.image.url}}" border="0" style="display: block;"/>
                                 {% elif pstory.story_image1 %}
@@ -746,7 +746,7 @@ position: absolute;;
           </div>
           <div class="col-4-2">
               <h2 class="section-header">
-                  <a href="/category/c/economy/" target="_blank">
+                  <a href="/category/c/economy/">
                       <span>Economy</span>
                   </a>
               </h2>
@@ -754,12 +754,12 @@ position: absolute;;
                     {% for ecstory in economy_contents %}
                         <li>
                                 <h4>
-                                      <a href="/content/view/{{ecstory.id}}/" target="_blank" class="news-item-title">
+                                      <a href="/content/view/{{ecstory.id}}/" class="news-item-title">
                                           {{ecstory.title}}
                                       </a>
                                 </h4>
                                 <div class="col-img-thumb">
-                                      <a href="/content/view/{{ecstory.id}}/" target="_blank">
+                                      <a href="/content/view/{{ecstory.id}}/">
                                           {% if ecstory.image %}
                                               <img class="imgbrd lazy" src="{{static_url}}{{ecstory.image.url}}" border="0" style="display: block;"/>
                                           {% elif ecstory.story_image1 %}
@@ -775,18 +775,18 @@ position: absolute;;
           </div>
           <div class="col-4-3">
                 <h2 class="section-header">
-                    <a href="/category/c/sports/" target="_blank">
+                    <a href="/category/c/sports/">
                         <span>Sports</span>
                     </a>
                 </h2>
                 <div class="col-4-detail">
                     <h3>
-                          <a href="/content/view/{{sp1.id}}/" target="_blank" class="news-item-title">
+                          <a href="/content/view/{{sp1.id}}/" class="news-item-title">
                               {{sp1.title}}
                           </a>
                     </h3>
                     <div class="col-img-detail">
-                        <a href="/content/view/{{sp1.id}}/" target="_blank">
+                        <a href="/content/view/{{sp1.id}}/">
                             {% if sp1.image %}
                               <img class="imgbrd lazy" src="{{static_url}}{{sp1.image.url}}" border="0" style="display: block;"/>
                             {% elif sp1.story_image1 %}
@@ -801,12 +801,12 @@ position: absolute;;
                   {% for spostory in sports_contents %}
                     <li>
                         <h4>
-                              <a href="/content/view/{{spostory.id}}/" target="_blank" class="news-item-title">
+                              <a href="/content/view/{{spostory.id}}/" class="news-item-title">
                                   {{spostory.title}}
                               </a>
                         </h4>
                         <div class="col-img-thumb">
-                            <a href="/content/view/{{spostory.id}}/" target="_blank">
+                            <a href="/content/view/{{spostory.id}}/">
                                 {% if spostory.image %}
                                   <img class="imgbrd lazy" src="{{static_url}}{{spostory.image.url}}" border="0" style="display: block;"/>
                                 {% elif spostory.story_image1 %}
@@ -822,7 +822,7 @@ position: absolute;;
             </div>
             <div class="col-4-4">
                     <h2 class="section-header">
-                        <a href="/category/c/entertainment/" target="_blank">
+                        <a href="/category/c/entertainment/">
                             <span>Entertainment</span>
                         </a>
                     </h2>
@@ -830,12 +830,12 @@ position: absolute;;
                           {% for entstory in entertain_contents %}
                               <li>
                                   <h4>
-                                        <a href="/content/view/{{entstory.id}}/" target="_blank" class="news-item-title">
+                                        <a href="/content/view/{{entstory.id}}/" class="news-item-title">
                                             {{entstory.title}}
                                         </a>
                                   </h4>
                                   <div class="col-img-thumb">
-                                        <a href="/content/view/{{entstory.id}}/" target="_blank"></a>
+                                        <a href="/content/view/{{entstory.id}}/"></a>
                                           {% if entstory.image %}
                                             <img class="imgbrd lazy" src="{{static_url}}{{entstory.image.url}}" border="0" style="display: block;"/>
                                           {% elif entstory.story_image1 %}
@@ -852,7 +852,7 @@ position: absolute;;
       </div>
       <div class="row-opinion">
           <h2 class="section-header">
-              <a href="/category/c/opinion/" target="_blank">
+              <a href="/category/c/opinion/">
                   <span>Opinion</span>
               </a>
           </h2>
@@ -862,12 +862,12 @@ position: absolute;;
                   <li>
                     <div class="opinion_description">
                         <h6>
-                            <a href="/content/view/{{opnstory.id}}/" target="_blank">{{opnstory.title}}</a>
+                            <a href="/content/view/{{opnstory.id}}/">{{opnstory.title}}</a>
                         </h6>
                     </div>
                     <div class="opinion-img-thumb">
                         <div>
-                            <a href="/content/view/{{opnstory.id}}/" target="_blank">
+                            <a href="/content/view/{{opnstory.id}}/">
                                 {% if opnstory.image %}
                                     <img src="{{static_url}}{{opnstory.image.url}}"/>
                                 {% elif opnstory.story_image1 %}
@@ -886,15 +886,15 @@ position: absolute;;
       <div class="row row-gen row-nation">
         <div class="col-xs-9">
             <h2 class="section-header">
-                  <a href="/category/c/india/" target="_blank">
+                  <a href="/category/c/india/">
                       <span>India News</span>
                   </a>
             </h2>
           <ul class="news-top-items">
             <li>
-                <a href="/content/view/{{indcon.id}}/" target="_blank"><h1>{{indcon.title}}</h1></a>
+                <a href="/content/view/{{indcon.id}}/"><h1>{{indcon.title}}</h1></a>
                 <div class="img-thumb">
-                    <a href="/content/view/{{indcon.id}}/" target="_blank">
+                    <a href="/content/view/{{indcon.id}}/">
                         {% if indcon.image %}
                             <img src="{{static_url}}{{indcon.image.url}}"/>
                         {% elif indcon.story_image1 %}
@@ -908,7 +908,7 @@ position: absolute;;
             {% for indstory in india_contents %}
               <li>
                 <div class="img-thumb">
-                    <a href="/content/view/{{indstory.id}}/" target="_blank">
+                    <a href="/content/view/{{indstory.id}}/">
                         {% if indstory.image %}
                             <img alt='{{indstory.title|slice:":30"}}' title='{{indstory.title|slice:":30"}}' class="imgbrd" src="{{static_url}}{{indstory.image.url}}" border="0"/>
                         {% elif indstory.story_image1 %}
@@ -918,7 +918,7 @@ position: absolute;;
                         {% endif%}
                     </a>
                 </div>
-                <h2><a href="/content/view/{{indstory.id}}/" target="_blank" class="item-title">{{indstory.title}}</a></h2>
+                <h2><a href="/content/view/{{indstory.id}}/" class="item-title">{{indstory.title}}</a></h2>
               </li>
             {% endfor %}
           </ul>
@@ -926,7 +926,7 @@ position: absolute;;
         <div class="col-xs-3">
             <div class="ad-cont ad-cont-1">
                 <div>
-                    <a href='{{ad2url}}' target="_blank">
+                    <a href='{{ad2url}}'>
                         <img src='{{ad2img}}' >
                     </a>
                 </div>
@@ -936,15 +936,15 @@ position: absolute;;
       <div class="row row-gen row-world">
         <div class="col-xs-9">
             <h2 class="section-header">
-                  <a href="/category/c/world/" target="_blank">
+                  <a href="/category/c/world/">
                       <span>World News</span>
                   </a>
             </h2>
           <ul class="news-top-items">
             <li>
-                <a href="/content/view/{{wrldc.id}}/" target="_blank"><h1>{{wrldc.title}}</h1></a>
+                <a href="/content/view/{{wrldc.id}}/"><h1>{{wrldc.title}}</h1></a>
                 <div class="img-thumb">
-                    <a href="/content/view/{{wrldc.id}}/" target="_blank">
+                    <a href="/content/view/{{wrldc.id}}/">
                         {% if wrldc.image %}
                             <img src="{{static_url}}{{wrldc.image.url}}"/>
                         {% elif wrldc.story_image1 %}
@@ -958,7 +958,7 @@ position: absolute;;
             {% for wrlstory in world_contents %}
               <li>
                 <div class="img-thumb">
-                  <a href="/content/view/{{wrlstory.id}}/" target="_blank">
+                  <a href="/content/view/{{wrlstory.id}}/">
                       {% if wrlstory.image %}
                           <img class="imgbrd" src="{{static_url}}{{wrlstory.image.url}}" border="0">
                       {% elif wrlstory.story_image1 %}
@@ -968,7 +968,7 @@ position: absolute;;
                       {% endif%}
                   </a>
                 </div>
-                <h2><a href="/content/view/{{wrlstory.id}}/" target="_blank" class="item-title">{{wrlstory.title}}</a></h2>
+                <h2><a href="/content/view/{{wrlstory.id}}/" class="item-title">{{wrlstory.title}}</a></h2>
               </li>
             {% endfor %}
           </ul>
@@ -976,7 +976,7 @@ position: absolute;;
         <div class="col-xs-3">
             <div class="ad-cont ad-cont-1">
                 <div>
-                    <a href='{{ad1url}}' target="_blank">
+                    <a href='{{ad1url}}'>
                         <img src='{{ad1img}}' >
                     </a>
                 </div>
@@ -988,10 +988,10 @@ position: absolute;;
 </section>
 <footer>
     <ul>
-        <li><a href="/about_us" target="_blank">About us</a></li>
-        <li><a href="/contact_us" target="_blank">Contact us</a></li>
-        <li><a href="/disclaimer" target="_blank">Disclaimer</a></li>
-        <li><a href="/copyright" target="_blank">© 2018 Thenewsroom</a></li>
+        <li><a href="/about_us">About us</a></li>
+        <li><a href="/contact_us">Contact us</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/copyright">© 2018 Thenewsroom</a></li>
     </ul>
 </footer>
 

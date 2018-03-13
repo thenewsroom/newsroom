@@ -677,7 +677,7 @@ width: 100%;
         <div class="category-left-col">
           {% for trarticle in trend_cont %}
               <div class="category-left-article">
-                  <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/" target="_blank">{{trarticle.title}}</a></h5>
+                  <h5 class="lctitle"><a href="/content/view/{{trarticle.id}}/">{{trarticle.title}}</a></h5>
                   <div class="feed-article-lead">
                       {{trarticle.comments}}
                   </div>
@@ -732,7 +732,7 @@ width: 100%;
         <div class="category-left-col">
           {%for llarticle in not_miss_cont%}
               <div class="category-left-article">
-                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/" target="_blank">{{llarticle.title}}</a></h5>
+                        <h5 class="lctitle"><a href="/content/view/{{llarticle.id}}/">{{llarticle.title}}</a></h5>
                         <div class="feed-article-lead">
                             {{llarticle.comments}}
                         </div>
@@ -744,10 +744,10 @@ width: 100%;
   </div>
 <footer>
     <ul>
-        <li><a href="/about_us" target="_blank">About us</a></li>
-        <li><a href="/contact_us" target="_blank">Contact us</a></li>
-        <li><a href="/disclaimer" target="_blank">Disclaimer</a></li>
-        <li><a href="/copyright" target="_blank">© 2018 Thenewsroom</a></li>
+        <li><a href="/about_us">About us</a></li>
+        <li><a href="/contact_us">Contact us</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/copyright">© 2018 Thenewsroom</a></li>
     </ul>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
